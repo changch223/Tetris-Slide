@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    let difficulties = ["Classic", "Medium", "Hard", "Extreme"]
+    let difficulties = ["Classic", "Level ProMax"]
     
     var body: some View {
         NavigationStack {
@@ -25,12 +25,9 @@ struct ContentView: View {
                         switch difficulty {
                         case "Classic":
                             GameViewShared()
-                        case "Medium":
-                            GameViewMedium(difficulty: "Medium")
-                        case "Hard":
-                            EmptyView()
-                        case "Extreme":
-                            EmptyView()
+                        case "Level ProMax":
+                            GameViewSharedProMax()
+                        
                         default:
                             EmptyView()
                         }
