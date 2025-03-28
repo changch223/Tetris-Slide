@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    let difficulties = ["Easy", "Medium", "Hard", "Extreme"]
+    let difficulties = ["Classic", "Medium", "Hard", "Extreme"]
     
     var body: some View {
         NavigationStack {
@@ -21,7 +21,20 @@ struct ContentView: View {
                 Spacer()
                 
                 ForEach(difficulties, id: \.self) { difficulty in
-                    NavigationLink(destination: GameView(difficulty: difficulty)) {
+                    NavigationLink {
+                        switch difficulty {
+                        case "Classic":
+                            GameViewShared()
+                        case "Medium":
+                            GameViewMedium(difficulty: "Medium")
+                        case "Hard":
+                            EmptyView()
+                        case "Extreme":
+                            EmptyView()
+                        default:
+                            EmptyView()
+                        }
+                    } label: {
                         Text(difficulty)
                             .font(.title2)
                             .foregroundColor(.white)
@@ -38,7 +51,6 @@ struct ContentView: View {
         }
     }
 }
-
 
 #Preview {
     ContentView()

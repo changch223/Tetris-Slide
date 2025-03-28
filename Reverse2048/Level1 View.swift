@@ -1,5 +1,5 @@
 //
-//  Level1 View.swift
+//  GameViewShared.swift
 //  Reverse2048
 //
 //  Created by chang chiawei on 2025-03-28.
@@ -7,31 +7,72 @@
 
 import SwiftUI
 
+// MARK: - 難易度選項
+enum Difficulty: String, CaseIterable, Identifiable {
+    var id: String { self.rawValue }
+    case easy = "簡單"
+    case medium = "中等"
+}
+
+// MARK: - 遊戲邏輯
 enum SwipeDirection { case left, right, up, down }
 
 class Game2048Obstacle: ObservableObject {
     @Published var board: [[Int]]
-    @Published var moveCount = 0
-    @Published var gameOver = false
-    @Published var message = ""
+    // 記錄已使用的步數，剩餘步數 = maxMoves - moveCount
+    @Published var moveCount: Int = 0
+    @Published var gameOver: Bool = false
+    @Published var message: String = ""
     
     // 障礙值獨立記錄，同時儲存在棋盤右下角
-    @Published var obstacle: Int = 2048
+    @Published var obstacle: Int
     
     let size = 4
-    let maxMoves = 100
+    var maxMoves: Int
+    var difficulty: Difficulty
     
-    init() {
+    init(difficulty: Difficulty = .easy) {
+        self.difficulty = difficulty
+        // 根據難易度設定步數上限與障礙初始值
+        switch difficulty {
+        case .easy:
+            self.maxMoves = 100
+            self.obstacle = 2048
+        case .medium:
+            self.maxMoves = 50
+            self.obstacle = 4096
+        }
         board = Array(repeating: Array(repeating: 0, count: size), count: size)
         resetGame()
     }
     
-    func resetGame() {
-        board = Array(repeating: Array(repeating: 0, count: size), count: size)
-        obstacle = 2048
+    // 新增一個可選參數 newDifficulty，若傳入則依新難易度更新設定
+    func resetGame(newDifficulty: Difficulty? = nil) {
+        // 若有傳入新難易度則更新難易度與相關參數
+        if let diff = newDifficulty {
+            self.difficulty = diff
+            switch diff {
+            case .easy:
+                self.maxMoves = 100
+                self.obstacle = 2048
+            case .medium:
+                self.maxMoves = 50
+                self.obstacle = 4096
+            }
+        } else {
+            // 否則依目前難易度重置障礙初始值
+            switch self.difficulty {
+            case .easy:
+                self.obstacle = 2048
+            case .medium:
+                self.obstacle = 4096
+            }
+        }
+        
         moveCount = 0
         gameOver = false
         message = ""
+        board = Array(repeating: Array(repeating: 0, count: size), count: size)
         addRandomTile()
         addRandomTile()
         // 固定障礙：右下角
@@ -56,7 +97,7 @@ class Game2048Obstacle: ObservableObject {
     
     // 標準合併函數，依 2048 規則合併相同數字
     func mergeLine(_ line: [Int]) -> [Int] {
-        var arr = line.filter { $0 != 0 }
+        let arr = line.filter { $0 != 0 }
         var result: [Int] = []
         var skip = false
         for i in 0..<arr.count {
@@ -65,6 +106,7 @@ class Game2048Obstacle: ObservableObject {
                 continue
             }
             if i < arr.count - 1 && arr[i] == arr[i+1] {
+                // 合併：例如 2 + 2 = 4
                 result.append(arr[i] * 2)
                 skip = true
             } else {
@@ -77,10 +119,10 @@ class Game2048Obstacle: ObservableObject {
         return result
     }
     
-    // 根據滑動方向呼叫對應邏輯
+    // 每次滑動都扣除一步，不論棋盤是否有變化
     func move(_ direction: SwipeDirection) {
         guard !gameOver else { return }
-        let original = board
+        
         switch direction {
         case .left:
             moveLeft()
@@ -91,11 +133,10 @@ class Game2048Obstacle: ObservableObject {
         case .down:
             moveDown()
         }
-        if board != original {
-            moveCount += 1
-            addRandomTile()
-            checkGameStatus()
-        }
+        // 每次滑動都扣除一步
+        moveCount += 1
+        addRandomTile()
+        checkGameStatus()
     }
     
     func checkGameStatus() {
@@ -106,12 +147,11 @@ class Game2048Obstacle: ObservableObject {
             message = "步數用盡，遊戲失敗！"
             gameOver = true
         }
-        // 每次更新後，確保障礙位置數值正確
+        // 同步更新障礙所在位置
         board[size-1][size-1] = obstacle
     }
     
     // MARK: - 各方向移動邏輯
-    // 向左移動：對最後一列僅處理前 3 格，障礙保持不動
     func moveLeft() {
         for r in 0..<size {
             if r == size-1 {
@@ -120,14 +160,12 @@ class Game2048Obstacle: ObservableObject {
                 for c in 0..<size-1 {
                     board[r][c] = segment[c]
                 }
-                // 障礙 (col 3) 保持不變
             } else {
                 board[r] = mergeLine(board[r])
             }
         }
     }
     
-    // 向右移動：對最後一列先處理前 3 格（反向合併），再檢查是否可與障礙合併
     func moveRight() {
         for r in 0..<size {
             if r == size-1 {
@@ -137,6 +175,7 @@ class Game2048Obstacle: ObservableObject {
                 segment.reverse()
                 // 特殊處理：檢查最靠近障礙的數字是否能與障礙合併
                 if let A = segment.last, A != 0, obstacle > A {
+                    // 例如：2048 - 2² = 2044
                     obstacle -= A * A
                     segment[segment.count - 1] = 0
                 }
@@ -153,7 +192,6 @@ class Game2048Obstacle: ObservableObject {
         }
     }
     
-    // 向上移動：對最後一行所在的最後一欄僅處理前 3 個數值
     func moveUp() {
         for c in 0..<size {
             if c == size-1 {
@@ -165,7 +203,6 @@ class Game2048Obstacle: ObservableObject {
                 for r in 0..<size-1 {
                     board[r][c] = col[r]
                 }
-                // 障礙 (row 3) 保持不動
             } else {
                 var col = [Int]()
                 for r in 0..<size {
@@ -179,7 +216,6 @@ class Game2048Obstacle: ObservableObject {
         }
     }
     
-    // 向下移動：對最後一欄先處理前 3 格（反向合併），再檢查是否可與障礙合併
     func moveDown() {
         for c in 0..<size {
             if c == size-1 {
@@ -214,48 +250,208 @@ class Game2048Obstacle: ObservableObject {
     }
 }
 
-
 // MARK: - UI Components
 
-struct GameView: View {
-    let difficulty: String
+// 單一方塊視圖，依據數值顯示不同背景與文字顏色，障礙方塊則特別標示
+struct TileView: View {
+    let value: Int
+    let isObstacle: Bool
     
-    @ObservedObject var game = Game2048Obstacle()
-
     var body: some View {
-        VStack(spacing: 20) {
-            Text("步數: \(game.moveCount)/100").font(.title)
-            Text(game.message).foregroundColor(.red)
-
-            VStack(spacing: 4) {
-                ForEach(0..<game.size, id: \..self) { r in
-                    HStack(spacing: 4) {
-                        ForEach(0..<game.size, id: \..self) { c in
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 8)
-                                    .fill(r == game.size-1 && c == game.size-1 ? Color.red : Color.gray.opacity(0.3))
-                                Text(r == game.size-1 && c == game.size-1 ? "\(game.obstacle)" : game.board[r][c] != 0 ? "\(game.board[r][c])" : "")
-                                    .font(.headline)
-                                    .foregroundColor(.black)
-                            }
-                            .frame(width: 70, height: 70)
-                        }
-                    }
-                }
+        ZStack {
+            RoundedRectangle(cornerRadius: 8)
+                .fill(backgroundColor)
+            if value != 0 {
+                Text("\(value)")
+                    .font(.system(size: 24, weight: .bold))
+                    .foregroundColor(textColor)
             }
-            .gesture(DragGesture(minimumDistance: 20).onEnded({ value in
-                let horizontalAmount = value.translation.width
-                let verticalAmount = value.translation.height
-                if abs(horizontalAmount) > abs(verticalAmount) {
-                    game.move(horizontalAmount < 0 ? .left : .right)
-                } else {
-                    game.move(verticalAmount < 0 ? .up : .down)
-                }
-            }))
-
-            Button("重新開始") { game.resetGame() }
-                .padding().background(Color.blue).foregroundColor(.white).cornerRadius(8)
-        }.padding()
+        }
+        .frame(width: 70, height: 70)
+        .shadow(color: Color.black.opacity(0.2), radius: 3, x: 2, y: 2)
+    }
+    
+    var backgroundColor: Color {
+        if isObstacle {
+            return Color.red
+        }
+        if value == 0 {
+            // 空格
+            return Color(red: 205/255, green: 193/255, blue: 180/255)
+        }
+        return tileBackground(for: value)
+    }
+    
+    func tileBackground(for number: Int) -> Color {
+        switch number {
+        case 2:     return Color(red: 238/255, green: 228/255, blue: 218/255)
+        case 4:     return Color(red: 237/255, green: 224/255, blue: 200/255)
+        case 8:     return Color(red: 242/255, green: 177/255, blue: 121/255)
+        case 16:    return Color(red: 245/255, green: 149/255, blue: 99/255)
+        case 32:    return Color(red: 246/255, green: 124/255, blue: 95/255)
+        case 64:    return Color(red: 246/255, green: 94/255, blue: 59/255)
+        case 128:   return Color(red: 237/255, green: 207/255, blue: 114/255)
+        case 256:   return Color(red: 237/255, green: 204/255, blue: 97/255)
+        case 512:   return Color(red: 237/255, green: 200/255, blue: 80/255)
+        case 1024:  return Color(red: 237/255, green: 197/255, blue: 63/255)
+        case 2048:  return Color(red: 237/255, green: 194/255, blue: 46/255)
+        default:    return Color.black
+        }
+    }
+    
+    var textColor: Color {
+        if value == 2 || value == 4 {
+            return Color(red: 119/255, green: 110/255, blue: 101/255)
+        }
+        return Color.white
     }
 }
 
+// 棋盤視圖，模擬官方版 2048 的棋盤外框與格子間距
+struct GameBoardView: View {
+    @ObservedObject var game: Game2048Obstacle
+    
+    var body: some View {
+        VStack(spacing: 8) {
+            ForEach(0..<game.size, id: \.self) { r in
+                HStack(spacing: 8) {
+                    ForEach(0..<game.size, id: \.self) { c in
+                        let isObstacle = (r == game.size - 1 && c == game.size - 1)
+                        TileView(value: isObstacle ? game.obstacle : game.board[r][c],
+                                 isObstacle: isObstacle)
+                    }
+                }
+            }
+        }
+        .padding(8)
+        .background(Color(red: 187/255, green: 173/255, blue: 160/255))
+        .cornerRadius(12)
+        .shadow(radius: 5)
+    }
+}
+
+// 標題與狀態顯示區，顯示「剩餘步數」與「剩餘障礙」
+struct GameHeaderView: View {
+    let remainingMoves: Int
+    let remainingObstacle: Int
+    
+    var body: some View {
+        HStack {
+            Text("2048")
+                .font(.largeTitle)
+                .fontWeight(.heavy)
+                .foregroundColor(Color(red: 119/255, green: 110/255, blue: 101/255))
+            Spacer()
+            VStack(alignment: .trailing) {
+                Text("剩餘步數")
+                    .font(.subheadline)
+                    .foregroundColor(.white)
+                Text("\(remainingMoves)")
+                    .font(.headline)
+                    .foregroundColor(.white)
+            }
+            .padding(8)
+            .background(Color(red: 187/255, green: 173/255, blue: 160/255))
+            .cornerRadius(6)
+            VStack(alignment: .trailing) {
+                Text("剩餘障礙")
+                    .font(.subheadline)
+                    .foregroundColor(.white)
+                Text("\(remainingObstacle)")
+                    .font(.headline)
+                    .foregroundColor(.white)
+            }
+            .padding(8)
+            .background(Color(red: 187/255, green: 173/255, blue: 160/255))
+            .cornerRadius(6)
+        }
+        .padding(.horizontal)
+    }
+}
+
+// 主遊戲畫面，包含難易度選擇、狀態顯示、棋盤、遊戲規則說明與手勢操作
+struct GameViewShared: View {
+    @State private var selectedDifficulty: Difficulty = .easy
+    @StateObject private var game: Game2048Obstacle = Game2048Obstacle(difficulty: .easy)
+    
+    var body: some View {
+        ZStack {
+            Color(red: 250/255, green: 248/255, blue: 239/255)
+                .edgesIgnoringSafeArea(.all)
+            VStack(spacing: 20) {
+                // 難易度選擇
+                Picker("難易度", selection: $selectedDifficulty) {
+                    ForEach(Difficulty.allCases) { difficulty in
+                        Text(difficulty.rawValue).tag(difficulty)
+                    }
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding()
+                // 切換難易度時，建立新的遊戲實例
+                .onChange(of: selectedDifficulty) { newDifficulty in
+                    // resetGame() 中處理難易度相關的邏輯
+                    game.resetGame(newDifficulty: newDifficulty) // 或者重新指派一個新實例
+                }
+                
+                // 傳入剩餘步數 (maxMoves - moveCount) 與障礙數值
+                GameHeaderView(remainingMoves: game.maxMoves - game.moveCount,
+                               remainingObstacle: game.obstacle)
+                
+                // 遊戲規則說明 (包含合併示例)
+                Text("""
+                    遊戲規則：
+                    1. 滑動方塊合併相同數字 (例如：2 + 2 = 4)。
+                    2. 紅色方塊為障礙，其初始值依難易度而定（簡單：2048，中等：4096）。
+                    3. 當數字方塊與障礙合併時，障礙會減去該數字的平方 (例如：2048 - 2² = 2044)。
+                    4. 障礙值降至 0 或以下即獲勝；移動次數達上限則遊戲失敗。
+                    """)
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal)
+                
+                Spacer()
+                GameBoardView(game: game)
+                Spacer()
+                if game.gameOver {
+                    Text(game.message)
+                        .font(.title)
+                        .foregroundColor(.red)
+                        .padding()
+                }
+                Button(action: {
+                    withAnimation {
+                        game.resetGame()
+                    }
+                }) {
+                    Text("New Game")
+                        .fontWeight(.bold)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color(red: 143/255, green: 122/255, blue: 102/255))
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
+                .padding(.horizontal)
+            }
+            .gesture(DragGesture(minimumDistance: 20).onEnded { value in
+                let horizontal = value.translation.width
+                let vertical = value.translation.height
+                withAnimation {
+                    if abs(horizontal) > abs(vertical) {
+                        game.move(horizontal < 0 ? .left : .right)
+                    } else {
+                        game.move(vertical < 0 ? .up : .down)
+                    }
+                }
+            })
+        }
+    }
+}
+
+// MARK: - 預覽
+struct GameViewShared_Previews: PreviewProvider {
+    static var previews: some View {
+        GameViewShared()
+    }
+}
