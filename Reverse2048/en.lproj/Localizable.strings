@@ -14,6 +14,7 @@
 "label_remaining_obstacle" = "Remaining Obstacle";
 "msg_moves_exhausted" = "You've run out of moves. Game over!";
 "msg_you_win" = "🎉 You Win!";
+"msg_game_over"= "Game Over";
 "msg_obstacle_cleared" = "Congratulations! Obstacle cleared! You Win!";
 "btn_new_game" = "New Game";
 "label_difficulty" = "Difficulty";

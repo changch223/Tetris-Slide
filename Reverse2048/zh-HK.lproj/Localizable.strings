@@ -14,6 +14,7 @@
 "label_remaining_obstacle" = "剩餘障礙";
 "msg_moves_exhausted" = "步數用盡，遊戲失敗！";
 "msg_you_win" = "🎉 你贏了！";
+"msg_game_over"= "Game Over";
 "msg_obstacle_cleared" = "恭喜！障礙被清除！你獲勝了！";
 "btn_new_game" = "新遊戲";
 "label_difficulty" = "難易度";

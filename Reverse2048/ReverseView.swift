@@ -267,7 +267,8 @@ struct ReverseGameViewShared: View {
                 // 標題
                 Text("title_2048")
                     .font(.largeTitle)
-                    .fontWeight(.bold)
+                    .fontWeight(.heavy)
+                    .foregroundColor(Color(red: 119/255, green: 110/255, blue: 101/255))
                 
                 Spacer()
                 GameBoardReverseView(game: game)
@@ -281,7 +282,19 @@ struct ReverseGameViewShared: View {
                 }
                 
                 Button(action: {
-                    withAnimation {
+                    // 設定廣告關閉後的回呼：重置遊戲
+                    AdManager.shared.adDidDismissFullScreenContentCallback = {
+                        game.resetGame()
+                        animateVictory = false
+                        soundPlayed = false
+                    }
+                    
+                    // 取得當前的 rootViewController
+                    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                       let root = windowScene.windows.first?.rootViewController {
+                        AdManager.shared.showInterstitial(from: root)
+                    } else {
+                        // 若取得失敗則直接重置遊戲
                         game.resetGame()
                         animateVictory = false
                         soundPlayed = false
@@ -323,6 +336,9 @@ struct ReverseGameViewShared: View {
                         }
                     }
             }
+        }.onAppear {
+            // 載入第一支插頁廣告
+            AdManager.shared.loadInterstitial()
         }
         
         // Banner 廣告（假設 BannerAdView 已定義）

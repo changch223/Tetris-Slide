@@ -14,6 +14,7 @@
 "label_remaining_obstacle" = "残り値";
 "msg_moves_exhausted" = "回数が尽きました。ゲームオーバー！";
 "msg_you_win" = "🎉 勝利！";
+"msg_game_over"= "Game Over";
 "msg_obstacle_cleared" = "おめでとう！ブロックを取り除きました！あなたの勝利です！";
 "btn_new_game" = "新しいゲーム";
 "label_difficulty" = "難易度";

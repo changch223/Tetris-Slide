@@ -474,8 +474,20 @@ struct GameViewShared: View {
                 }
                 Button(action: {
                     withAnimation {
+                        // 設定廣告關閉後的回呼：重置遊戲
+                        AdManager.shared.adDidDismissFullScreenContentCallback = {
+                            game.resetGame()
+                            animateVictory = false
+                            soundPlayed = false
+                        }
+                    }
+                    // 取得當前的 rootViewController
+                    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                       let root = windowScene.windows.first?.rootViewController {
+                        AdManager.shared.showInterstitial(from: root)
+                    } else {
+                        // 若取得失敗則直接重置遊戲
                         game.resetGame()
-                        // 重設動畫與音效播放旗標
                         animateVictory = false
                         soundPlayed = false
                     }
@@ -518,6 +530,9 @@ struct GameViewShared: View {
                         }
                     }
             }
+        }.onAppear {
+            // 載入第一支插頁廣告
+            AdManager.shared.loadInterstitial()
         }
         
         BannerAdView(adUnitID: "ca-app-pub-9275380963550837/8710922047")
