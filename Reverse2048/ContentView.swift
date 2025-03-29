@@ -83,7 +83,7 @@ struct ContentView: View {
                             }
                         }
                     
-                               
+                    
                     
                     // 難易度按鈕
                     ForEach(difficulties) { difficulty in
@@ -119,7 +119,7 @@ struct ContentView: View {
                                 }
                         )
                     }
-
+                    
                     
                     Spacer(minLength: 60) // 下方間距
                     
@@ -127,12 +127,15 @@ struct ContentView: View {
                         .font(.footnote)
                         .foregroundColor(.gray)
                         .padding(.bottom, 10)
-
+                    
+                    BannerAdView(adUnitID: "ca-app-pub-9275380963550837/8710922047")
+                        .frame(height: 50)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarHidden(true)
         }
+    
     }
 }
 

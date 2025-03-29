@@ -519,6 +519,9 @@ struct GameViewShared: View {
                     }
             }
         }
+        
+        BannerAdView(adUnitID: "ca-app-pub-9275380963550837/8710922047")
+            .frame(height: 50)
     }
 }
 

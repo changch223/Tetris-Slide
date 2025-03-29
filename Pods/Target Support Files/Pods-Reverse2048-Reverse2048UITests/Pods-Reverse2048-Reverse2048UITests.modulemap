@@ -1,0 +1,6 @@
+framework module Pods_Reverse2048_Reverse2048UITests {
+  umbrella header "Pods-Reverse2048-Reverse2048UITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
