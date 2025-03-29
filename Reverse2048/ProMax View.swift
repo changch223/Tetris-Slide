@@ -6,6 +6,27 @@
 //
 
 import SwiftUI
+import AVFoundation  // 新增 AVFoundation 用於播放音效
+
+// MARK: - 音效管理器
+class SoundManager {
+    static let shared = SoundManager()
+    var audioPlayer: AVAudioPlayer?
+    
+    func playVictorySound() {
+        // 請將勝利音效檔案命名為 "victory.mp3" 並加入專案中
+        guard let url = Bundle.main.url(forResource: "win", withExtension: "mp3") else {
+            print("Victory sound file not found")
+            return
+        }
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            audioPlayer?.play()
+        } catch {
+            print("Error playing victory sound: \(error.localizedDescription)")
+        }
+    }
+}
 
 
 
@@ -25,7 +46,7 @@ class Game2048ObstacleProMAX: ObservableObject {
         self.difficulty = difficulty
         switch difficulty {
         case .easy:
-            self.maxMoves = 100
+            self.maxMoves = 50
             self.obstacle = 2048
         case .medium:
             self.maxMoves = 50
@@ -44,7 +65,7 @@ class Game2048ObstacleProMAX: ObservableObject {
                 self.maxMoves = 50
                 self.obstacle = 9999
             case .medium:
-                self.maxMoves = 200
+                self.maxMoves = 150
                 self.obstacle = 999999
             }
         } else {
@@ -133,15 +154,16 @@ class Game2048ObstacleProMAX: ObservableObject {
     
     func checkGameStatus() {
         if obstacle <= 0 {
-            message = "msg_obstacle_cleared"
+            message = NSLocalizedString("msg_obstacle_cleared", comment: "Obstacle cleared message")
             gameOver = true
         } else if moveCount >= maxMoves {
-            message = "步數用盡，遊戲失敗！"
+            message = NSLocalizedString("msg_moves_exhausted", comment: "Out of moves message")
             gameOver = true
         }
         // 確保障礙格數值同步
         board[size-1][size-1] = obstacle
     }
+
     
     // MARK: - 各方向移動邏輯 (參照 HTML 版本)
     // 左移：若底部行，僅處理前 3 格，保持障礙不變
@@ -177,11 +199,12 @@ class Game2048ObstacleProMAX: ObservableObject {
                         obstacle -= lastValue * lastValue
                         segment[segment.count - 1] = 0
                         if obstacle <= 0 {
-                            message = "msg_obstacle_cleared"
+                            message = NSLocalizedString("msg_obstacle_cleared", comment: "Obstacle cleared message")
                             gameOver = true
                         }
                     }
                 }
+
                 
                 // 更新回到底部那一行
                 for c in 0..<size-1 {
@@ -246,7 +269,7 @@ class Game2048ObstacleProMAX: ObservableObject {
                         col[col.count - 1] = 0
                     }
                     if obstacle <= 0 {
-                        message = "msg_obstacle_cleared"
+                        message = NSLocalizedString("msg_obstacle_cleared", comment: "Obstacle cleared message")
                         gameOver = true
                     }
                 }
@@ -325,6 +348,24 @@ struct TileViewProMax: View {
     }
 }
 
+// MARK: - 勝利動畫覆蓋層
+struct VictoryOverlayView: View {
+    @Binding var animate: Bool
+
+    var body: some View {
+        Text("🎉 Victory! 🎉")
+            .font(.largeTitle)
+            .fontWeight(.heavy)
+            .foregroundColor(.green)
+            .scaleEffect(animate ? 1.2 : 0.8)
+            .opacity(animate ? 1.0 : 0.5)
+            .animation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true), value: animate)
+            .onAppear {
+                animate = true
+            }
+    }
+}
+
 struct GameBoardViewProMax: View {
     @ObservedObject var game: Game2048ObstacleProMAX
     
@@ -388,6 +429,9 @@ struct GameHeaderViewProMax: View {
 struct GameViewSharedProMax: View {
     @State private var selectedDifficulty: Difficulty = .easy
     @StateObject private var game: Game2048ObstacleProMAX = Game2048ObstacleProMAX(difficulty: .easy)
+    // 新增用於觸發勝利動畫與防止重複播放音效的 state
+    @State private var animateVictory: Bool = false
+    @State private var soundPlayed: Bool = false
     
     var body: some View {
         ZStack {
@@ -404,10 +448,13 @@ struct GameViewSharedProMax: View {
                 .padding()
                 .onChange(of: selectedDifficulty) { newDifficulty in
                     game.resetGame(newDifficulty: newDifficulty)
+                    // 重設動畫與音效播放旗標
+                    animateVictory = false
+                    soundPlayed = false
                 }
                 
                 GameHeaderViewProMax(remainingMoves: game.maxMoves - game.moveCount,
-                               remainingObstacle: game.obstacle)
+                                     remainingObstacle: game.obstacle)
                 
                 Text("rules_combinedProMax")
                     .font(.footnote)
@@ -427,6 +474,9 @@ struct GameViewSharedProMax: View {
                 Button(action: {
                     withAnimation {
                         game.resetGame()
+                        // 重設動畫與音效播放旗標
+                        animateVictory = false
+                        soundPlayed = false
                     }
                 }) {
                     Text("btn_new_game")
@@ -450,6 +500,22 @@ struct GameViewSharedProMax: View {
                     }
                 }
             })
+            
+            // 當遊戲結束且勝利時顯示勝利動畫覆蓋層
+            if game.gameOver &&
+                (game.message == NSLocalizedString("msg_you_win", comment: "Victory message") ||
+                 game.message == NSLocalizedString("msg_obstacle_cleared", comment: "Obstacle cleared message")) {
+                VictoryOverlayView(animate: $animateVictory)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.black.opacity(0.3))
+                    .edgesIgnoringSafeArea(.all)
+                    .onAppear {
+                        if !soundPlayed {
+                            SoundManager.shared.playVictorySound()
+                            soundPlayed = true
+                        }
+                    }
+            }
         }
     }
 }

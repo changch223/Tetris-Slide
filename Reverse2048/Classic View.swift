@@ -46,7 +46,7 @@ class Game2048Obstacle: ObservableObject {
         // 根據難易度設定步數上限與障礙初始值
         switch difficulty {
         case .easy:
-            self.maxMoves = 100
+            self.maxMoves = 50
             self.obstacle = 2048
         case .medium:
             self.maxMoves = 50
@@ -106,31 +106,30 @@ class Game2048Obstacle: ObservableObject {
     }
     
     // 標準合併函數，依 2048 規則合併相同數字
-    /// 相同 -> A×A，不同 -> |A - B|
     func mergeLine(_ line: [Int]) -> [Int] {
         let arr = line.filter { $0 != 0 }
-        var merged: [Int] = []
+        var result: [Int] = []
         var skip = false
         for i in 0..<arr.count {
             if skip {
                 skip = false
                 continue
             }
-            if i < arr.count - 1 {
-                if arr[i] == arr[i+1] {
-                    merged.append(arr[i] * arr[i]) // 兩數相同 => A×A
-                } else {
-                    merged.append(abs(arr[i] - arr[i+1])) // 不同 => |A - B|
-                }
+            if i < arr.count - 1 && arr[i] == arr[i+1] {
+                // 合併：例如 2 + 2 = 4
+                result.append(arr[i] * 2)
+                
+                
+                
                 skip = true
             } else {
-                merged.append(arr[i])
+                result.append(arr[i])
             }
         }
-        while merged.count < line.count {
-            merged.append(0)
+        while result.count < line.count {
+            result.append(0)
         }
-        return merged
+        return result
     }
 
     
@@ -156,10 +155,10 @@ class Game2048Obstacle: ObservableObject {
     
     func checkGameStatus() {
         if obstacle <= 0 {
-            message = "msg_you_win"
+            message = NSLocalizedString("msg_you_win", comment: "Victory message when obstacle is cleared")
             gameOver = true
         } else if moveCount >= maxMoves {
-            message = "msg_moves_exhausted！"
+            message = NSLocalizedString("msg_moves_exhausted", comment: "Message when moves are exhausted")
             gameOver = true
         }
         // 同步更新障礙所在位置
@@ -208,7 +207,7 @@ class Game2048Obstacle: ObservableObject {
                         rowSegment[rowSegment.count - 1] = 0
                     }
                     if obstacle <= 0 {
-                        message = "msg_obstacle_cleared"
+                        message = NSLocalizedString("msg_obstacle_cleared", comment: "Message when obstacle is cleared")
                         gameOver = true
                     }
                 }
@@ -287,7 +286,7 @@ class Game2048Obstacle: ObservableObject {
                     }
                     // 如果障礙扣到 0 或以下 → 勝利
                     if obstacle <= 0 {
-                        message = "msg_obstacle_cleared"
+                        message = NSLocalizedString("msg_obstacle_cleared", comment: "Message when the obstacle has been cleared")
                         gameOver = true
                     }
                 }
@@ -427,6 +426,9 @@ struct GameHeaderView: View {
 struct GameViewShared: View {
     @State private var selectedDifficulty: Difficulty = .easy
     @StateObject private var game: Game2048Obstacle = Game2048Obstacle(difficulty: .easy)
+    // 新增用於觸發勝利動畫與防止重複播放音效的 state
+    @State private var animateVictory: Bool = false
+    @State private var soundPlayed: Bool = false
     
     var body: some View {
         ZStack {
@@ -445,6 +447,9 @@ struct GameViewShared: View {
                 .onChange(of: selectedDifficulty) { newDifficulty in
                     // resetGame() 中處理難易度相關的邏輯
                     game.resetGame(newDifficulty: newDifficulty) // 或者重新指派一個新實例
+                    // 重設動畫與音效播放旗標
+                    animateVictory = false
+                    soundPlayed = false
                 }
                 
                 // 傳入剩餘步數 (maxMoves - moveCount) 與障礙數值
@@ -470,6 +475,9 @@ struct GameViewShared: View {
                 Button(action: {
                     withAnimation {
                         game.resetGame()
+                        // 重設動畫與音效播放旗標
+                        animateVictory = false
+                        soundPlayed = false
                     }
                 }) {
                     Text("btn_new_game")
@@ -493,6 +501,23 @@ struct GameViewShared: View {
                     }
                 }
             })
+            
+            // 當遊戲結束且勝利時顯示勝利動畫覆蓋層
+            if game.gameOver && (
+                game.message == NSLocalizedString("msg_you_win", comment: "Victory message") ||
+                game.message == NSLocalizedString("msg_obstacle_cleared", comment: "Obstacle cleared victory message")
+            ) {
+                VictoryOverlayView(animate: $animateVictory)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.black.opacity(0.3))
+                    .edgesIgnoringSafeArea(.all)
+                    .onAppear {
+                        if !soundPlayed {
+                            SoundManager.shared.playVictorySound()
+                            soundPlayed = true
+                        }
+                    }
+            }
         }
     }
 }
