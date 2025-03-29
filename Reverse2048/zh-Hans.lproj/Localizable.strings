@@ -8,7 +8,7 @@
 "reverse_2048" = "反转 2048";
 "classic" = "经典模式";
 "level_promax" = "ProMax 难度";
-"title_2048" = "2048";
+"title_2048" = "反转版";
 "label_remaining_moves" = "剩余步数";
 "label_remaining_obstacle" = "剩余障碍";
 "msg_moves_exhausted" = "步数用尽，游戏失败！";

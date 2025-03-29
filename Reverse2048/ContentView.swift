@@ -17,7 +17,8 @@ struct DifficultyOption: Identifiable {
 
 let difficulties: [DifficultyOption] = [
     DifficultyOption(key: "classic", labelKey: "classic"),
-    DifficultyOption(key: "level_promax", labelKey: "level_promax")
+    DifficultyOption(key: "level_promax", labelKey: "level_promax"),
+    DifficultyOption(key: "traditional", labelKey: "traditional")
 ]
 
 
@@ -93,6 +94,8 @@ struct ContentView: View {
                                 GameViewShared()
                             case "level_promax":
                                 GameViewSharedProMax()
+                            case "traditional":
+                                ReverseView()
                             default:
                                 EmptyView()
                             }

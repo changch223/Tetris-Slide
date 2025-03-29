@@ -8,7 +8,7 @@
 "reverse_2048" = "激ムズリバース 2048";
 "classic" = "クラシック";
 "level_promax" = "プロマックスレベル";
-"title_2048" = "2048";
+"title_2048" = "リバースver";
 "label_remaining_moves" = "残り回数";
 "label_remaining_obstacle" = "残り値";
 "msg_moves_exhausted" = "回数が尽きました。ゲームオーバー！";

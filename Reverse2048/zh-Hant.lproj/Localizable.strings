@@ -5,10 +5,10 @@
 //  Created by chang chiawei on 2025-03-29.
 //
 
-"reverse_2048" = "反向 2048";
+"reverse_2048" = "反轉 2048";
 "classic" = "經典模式";
 "level_promax" = "ProMax 難度";
-"title_2048" = "2048";
+"title_2048" = "反轉版";
 "label_remaining_moves" = "剩餘步數";
 "label_remaining_obstacle" = "剩餘障礙";
 "msg_moves_exhausted" = "步數用盡，遊戲失敗！";

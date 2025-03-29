@@ -8,7 +8,7 @@
 "reverse_2048" = "Reverse 2048";
 "classic" = "Classic";
 "level_promax" = "Level ProMax";
-"title_2048" = "2048";
+"title_2048" = "Reverse2048";
 "label_remaining_moves" = "Remaining Moves";
 "label_remaining_obstacle" = "Remaining Obstacle";
 "msg_moves_exhausted" = "You've run out of moves. Game over!";
