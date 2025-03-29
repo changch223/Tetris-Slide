@@ -1,0 +1,31 @@
+//
+//  Localizable.strings
+//  Reverse2048
+//
+//  Created by chang chiawei on 2025-03-29.
+//
+
+"reverse_2048" = "反向 2048";
+"classic" = "經典模式";
+"level_promax" = "ProMax 難度";
+"title_2048" = "2048";
+"label_remaining_moves" = "剩餘步數";
+"label_remaining_obstacle" = "剩餘障礙";
+"msg_moves_exhausted" = "步數用盡，遊戲失敗！";
+"msg_you_win" = "🎉 你贏了！";
+"msg_obstacle_cleared" = "恭喜！障礙被清除！你獲勝了！";
+"btn_new_game" = "新遊戲";
+"label_difficulty" = "難易度";
+"difficulty_easy" = "簡單";
+"difficulty_medium" = "中等";
+"label_game_rules" = "遊戲規則：";
+"rule_classic_1" = "1. 滑動方塊合併相同數字 (例如：2 + 2 = 4)。";
+"rule_classic_2" = "2. 紅色方塊為障礙，其初始值依難易度而定（簡單：2048，中等：4096）。";
+"rule_classic_3" = "3. 當數字方塊與障礙合併時，障礙會減去該數字的平方 (例如：2048 - 2² = 2044)。";
+"rule_classic_4" = "4. 障礙值降至 0 或以下即獲勝；移動次數達上限則遊戲失敗。";
+"rule_promax_1" = "1. 滑動方塊合併：相同數字合併後為該數平方，不同數字合併後為差的絕對值。";
+"rule_promax_3" = "3. 當數字方塊向下移動進入障礙時，障礙減去該數的平方。";
+
+"rules_classic_combined" = "經典模式規則：\n1. 滑動相同數字的方塊以合併（例如：2 + 2 = 4）。\n2.  若數字方塊與障礙物合併，會從障礙物中減去該數字的平方（例如：2048 - 2² = 2044）。\n3. 障礙物歸零或以下即勝利；若達到最大步數則遊戲結束。";
+
+"rules_combinedProMax" = "ProMax 模式規則：\n1. 相同數字合併為其平方，異數合併為其差值絕對值。\n2.  當數字方塊往下合併至障礙物時，從障礙物中減去該數的平方。\n3. 障礙物歸零或以下即勝利，步數用盡則遊戲結束。";

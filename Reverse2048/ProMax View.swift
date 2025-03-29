@@ -41,18 +41,18 @@ class Game2048ObstacleProMAX: ObservableObject {
             self.difficulty = diff
             switch diff {
             case .easy:
-                self.maxMoves = 100
-                self.obstacle = 2048
-            case .medium:
                 self.maxMoves = 50
-                self.obstacle = 4096
+                self.obstacle = 9999
+            case .medium:
+                self.maxMoves = 200
+                self.obstacle = 999999
             }
         } else {
             switch self.difficulty {
             case .easy:
-                self.obstacle = 2048
+                self.obstacle = 9999
             case .medium:
-                self.obstacle = 4096
+                self.obstacle = 999999
             }
         }
         moveCount = 0
@@ -133,7 +133,7 @@ class Game2048ObstacleProMAX: ObservableObject {
     
     func checkGameStatus() {
         if obstacle <= 0 {
-            message = "恭喜！障礙被清除！你獲勝了！"
+            message = "msg_obstacle_cleared"
             gameOver = true
         } else if moveCount >= maxMoves {
             message = "步數用盡，遊戲失敗！"
@@ -177,7 +177,7 @@ class Game2048ObstacleProMAX: ObservableObject {
                         obstacle -= lastValue * lastValue
                         segment[segment.count - 1] = 0
                         if obstacle <= 0 {
-                            message = "恭喜！障礙被清除！你獲勝了！"
+                            message = "msg_obstacle_cleared"
                             gameOver = true
                         }
                     }
@@ -246,7 +246,7 @@ class Game2048ObstacleProMAX: ObservableObject {
                         col[col.count - 1] = 0
                     }
                     if obstacle <= 0 {
-                        message = "恭喜！障礙被清除！你獲勝了！"
+                        message = "msg_obstacle_cleared"
                         gameOver = true
                     }
                 }
@@ -359,7 +359,7 @@ struct GameHeaderViewProMax: View {
                 .foregroundColor(Color(red: 119/255, green: 110/255, blue: 101/255))
             Spacer()
             VStack(alignment: .trailing) {
-                Text("剩餘步數")
+                Text("label_remaining_moves")
                     .font(.subheadline)
                     .foregroundColor(.white)
                 Text("\(remainingMoves)")
@@ -370,7 +370,7 @@ struct GameHeaderViewProMax: View {
             .background(Color(red: 187/255, green: 173/255, blue: 160/255))
             .cornerRadius(6)
             VStack(alignment: .trailing) {
-                Text("剩餘障礙")
+                Text("label_remaining_obstacle")
                     .font(.subheadline)
                     .foregroundColor(.white)
                 Text("\(remainingObstacle)")
@@ -395,9 +395,9 @@ struct GameViewSharedProMax: View {
                 .edgesIgnoringSafeArea(.all)
             VStack(spacing: 20) {
                 // 難易度選擇
-                Picker("難易度", selection: $selectedDifficulty) {
+                Picker("label_difficulty", selection: $selectedDifficulty) {
                     ForEach(Difficulty.allCases) { difficulty in
-                        Text(difficulty.rawValue).tag(difficulty)
+                        difficulty.label.tag(difficulty)
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
@@ -409,13 +409,7 @@ struct GameViewSharedProMax: View {
                 GameHeaderViewProMax(remainingMoves: game.maxMoves - game.moveCount,
                                remainingObstacle: game.obstacle)
                 
-                Text("""
-                    遊戲規則：
-                    1. 滑動方塊合併：相同數字合併後為該數平方，不同數字合併後為差的絕對值。
-                    2. 紅色方塊為障礙，其初始值依難易度而定（簡單：2048，中等：4096）。
-                    3. 當數字方塊向下移動進入障礙時，障礙減去該數的平方。
-                    4. 障礙值降至 0 或以下即獲勝；步數達上限則遊戲失敗。
-                    """)
+                Text("rules_combinedProMax")
                     .font(.footnote)
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.center)
@@ -435,7 +429,7 @@ struct GameViewSharedProMax: View {
                         game.resetGame()
                     }
                 }) {
-                    Text("New Game")
+                    Text("btn_new_game")
                         .fontWeight(.bold)
                         .padding()
                         .frame(maxWidth: .infinity)

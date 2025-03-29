@@ -7,11 +7,21 @@
 
 import SwiftUI
 
-// MARK: - 難易度選項
 enum Difficulty: String, CaseIterable, Identifiable {
     var id: String { self.rawValue }
-    case easy = "簡單"
-    case medium = "中等"
+
+    case easy
+    case medium
+
+    // Localized text label
+    var label: Text {
+        switch self {
+        case .easy:
+            return Text("difficulty_easy")
+        case .medium:
+            return Text("difficulty_medium")
+        }
+    }
 }
 
 // MARK: - 遊戲邏輯
@@ -146,10 +156,10 @@ class Game2048Obstacle: ObservableObject {
     
     func checkGameStatus() {
         if obstacle <= 0 {
-            message = "🎉 你贏了！"
+            message = "msg_you_win"
             gameOver = true
         } else if moveCount >= maxMoves {
-            message = "步數用盡，遊戲失敗！"
+            message = "msg_moves_exhausted！"
             gameOver = true
         }
         // 同步更新障礙所在位置
@@ -198,7 +208,7 @@ class Game2048Obstacle: ObservableObject {
                         rowSegment[rowSegment.count - 1] = 0
                     }
                     if obstacle <= 0 {
-                        message = "恭喜！障礙被清除！你獲勝了！"
+                        message = "msg_obstacle_cleared"
                         gameOver = true
                     }
                 }
@@ -277,7 +287,7 @@ class Game2048Obstacle: ObservableObject {
                     }
                     // 如果障礙扣到 0 或以下 → 勝利
                     if obstacle <= 0 {
-                        message = "恭喜！障礙被清除！你獲勝了！"
+                        message = "msg_obstacle_cleared"
                         gameOver = true
                     }
                 }
@@ -381,13 +391,13 @@ struct GameHeaderView: View {
     
     var body: some View {
         HStack {
-            Text("2048")
+            Text("title_2048")
                 .font(.largeTitle)
                 .fontWeight(.heavy)
                 .foregroundColor(Color(red: 119/255, green: 110/255, blue: 101/255))
             Spacer()
             VStack(alignment: .trailing) {
-                Text("剩餘步數")
+                Text("label_remaining_moves")
                     .font(.subheadline)
                     .foregroundColor(.white)
                 Text("\(remainingMoves)")
@@ -398,7 +408,7 @@ struct GameHeaderView: View {
             .background(Color(red: 187/255, green: 173/255, blue: 160/255))
             .cornerRadius(6)
             VStack(alignment: .trailing) {
-                Text("剩餘障礙")
+                Text("label_remaining_obstacle")
                     .font(.subheadline)
                     .foregroundColor(.white)
                 Text("\(remainingObstacle)")
@@ -424,9 +434,9 @@ struct GameViewShared: View {
                 .edgesIgnoringSafeArea(.all)
             VStack(spacing: 20) {
                 // 難易度選擇
-                Picker("難易度", selection: $selectedDifficulty) {
+                Picker("label_difficulty", selection: $selectedDifficulty) {
                     ForEach(Difficulty.allCases) { difficulty in
-                        Text(difficulty.rawValue).tag(difficulty)
+                        difficulty.label.tag(difficulty)
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
@@ -442,13 +452,7 @@ struct GameViewShared: View {
                                remainingObstacle: game.obstacle)
                 
                 // 遊戲規則說明 (包含合併示例)
-                Text("""
-                    遊戲規則：
-                    1. 滑動方塊合併相同數字 (例如：2 + 2 = 4)。
-                    2. 紅色方塊為障礙，其初始值依難易度而定（簡單：2048，中等：4096）。
-                    3. 當數字方塊與障礙合併時，障礙會減去該數字的平方 (例如：2048 - 2² = 2044)。
-                    4. 障礙值降至 0 或以下即獲勝；移動次數達上限則遊戲失敗。
-                    """)
+                Text("rules_classic_combined")
                     .font(.footnote)
                     .foregroundColor(.gray)
                     .multilineTextAlignment(.center)
@@ -468,7 +472,7 @@ struct GameViewShared: View {
                         game.resetGame()
                     }
                 }) {
-                    Text("New Game")
+                    Text("btn_new_game")
                         .fontWeight(.bold)
                         .padding()
                         .frame(maxWidth: .infinity)
