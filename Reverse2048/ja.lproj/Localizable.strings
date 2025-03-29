@@ -6,7 +6,8 @@
 //
 
 "reverse_2048" = "激ムズリバース 2048";
-"classic" = "クラシック";
+"traditional" = "トラディショナル";
+"classic" = "クラシックモード";
 "level_promax" = "プロマックスレベル";
 "title_2048" = "リバースver";
 "label_remaining_moves" = "残り回数";

@@ -16,9 +16,9 @@ struct DifficultyOption: Identifiable {
 }
 
 let difficulties: [DifficultyOption] = [
+    DifficultyOption(key: "traditional", labelKey: "traditional"),
     DifficultyOption(key: "classic", labelKey: "classic"),
-    DifficultyOption(key: "level_promax", labelKey: "level_promax"),
-    DifficultyOption(key: "traditional", labelKey: "traditional")
+    DifficultyOption(key: "level_promax", labelKey: "level_promax")
 ]
 
 
@@ -49,13 +49,7 @@ struct ContentView: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack {
-                    Spacer() // 上方間距
-                    
-                    // 標題
-                    Text(LocalizedStringKey("reverse_2048"))
-                        .font(.largeTitle)
-                        .fontWeight(.heavy)
-                        .foregroundColor(Color(red: 119/255, green: 110/255, blue: 101/255))
+                   
                     
                     // Logo 圖片
                     Image("image")
@@ -84,18 +78,24 @@ struct ContentView: View {
                             }
                         }
                     
+                    // 標題
+                    Text(LocalizedStringKey("reverse_2048"))
+                        .font(.largeTitle)
+                        .fontWeight(.heavy)
+                        .foregroundColor(Color(red: 119/255, green: 110/255, blue: 101/255))
+                    
                     
                     
                     // 難易度按鈕
                     ForEach(difficulties) { difficulty in
                         NavigationLink {
                             switch difficulty.key {
-                            case "classic":
-                                GameViewShared()
+                            case "traditional":
+                                ReverseGameViewShared()
                             case "level_promax":
                                 GameViewSharedProMax()
-                            case "traditional":
-                                ReverseView()
+                            case "classic":
+                                GameViewShared()
                             default:
                                 EmptyView()
                             }

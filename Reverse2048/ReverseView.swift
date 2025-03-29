@@ -7,27 +7,44 @@
 
 import SwiftUI
 
-// MARK: - 遊戲邏輯 (Reverse 模式)
+
+
+
+// MARK: - 遊戲邏輯 (Reverse 模式) with Difficulty
 class Game2048Reverse: ObservableObject {
     @Published var board: [[Int]]
     @Published var gameOver: Bool = false
     @Published var message: String = ""
     
+    // 記錄是否達成勝利條件（merge 產生 0）
+    var winAchieved: Bool = false
+    
+    // 新增難易度屬性：簡單（easy）使用 2048；中等（medium）使用 4098
+    var difficulty: Difficulty = .easy
+    
     let size = 4
     
-    init() {
+    init(difficulty: Difficulty = .easy) {
+        self.difficulty = difficulty
         board = Array(repeating: Array(repeating: 0, count: size), count: size)
         resetGame()
     }
     
-    func resetGame() {
+    // 提供可選參數以變更難易度
+    func resetGame(newDifficulty: Difficulty? = nil) {
+        if let diff = newDifficulty {
+            self.difficulty = diff
+        }
         gameOver = false
         message = ""
+        winAchieved = false
         board = Array(repeating: Array(repeating: 0, count: size), count: size)
         addRandomTile()
         addRandomTile()
     }
     
+    // 根據難易度決定初始生成的方塊數值：
+    // easy → 2048；medium → 4098
     func addRandomTile() {
         var emptyCells = [(Int, Int)]()
         for r in 0..<size {
@@ -38,11 +55,12 @@ class Game2048Reverse: ObservableObject {
             }
         }
         if let cell = emptyCells.randomElement() {
-            board[cell.0][cell.1] = 2048
+            board[cell.0][cell.1] = (difficulty == .easy ? 2048 : 4098)
         }
     }
     
     // 合併邏輯：相同的數字合併後除以2 (例如 2048 + 2048 -> 1024)
+    // 當合併兩個 1 時，1/2 會產生 0，此時觸發勝利
     func mergeLine(_ line: [Int]) -> [Int] {
         let arr = line.filter { $0 != 0 }
         var result: [Int] = []
@@ -53,7 +71,11 @@ class Game2048Reverse: ObservableObject {
                 continue
             }
             if i < arr.count - 1 && arr[i] == arr[i+1] {
-                result.append(arr[i] / 2)
+                let merged = arr[i] / 2
+                if arr[i] == 1 {
+                    winAchieved = true
+                }
+                result.append(merged)
                 skip = true
             } else {
                 result.append(arr[i])
@@ -65,6 +87,7 @@ class Game2048Reverse: ObservableObject {
         return result
     }
     
+    // 移動操作：滑動後加入新方塊並檢查遊戲狀態
     func move(_ direction: SwipeDirection) {
         guard !gameOver else { return }
         switch direction {
@@ -77,16 +100,17 @@ class Game2048Reverse: ObservableObject {
         checkGameStatus()
     }
     
+    // 檢查遊戲狀態：如果沒有空格且無法合併則遊戲結束，
+    // 或者只要有一次合併產生 0 則勝利
     func checkGameStatus() {
-        // 這裡僅提供基本檢查：如果沒有空格且無法合併，則遊戲結束
-        if board.flatMap({ $0 }).contains(0) == false && !hasMoves() {
+        if !board.flatMap({ $0 }).contains(0) && !hasMoves() {
             gameOver = true
-            message = "Game Over"
+            message = NSLocalizedString("msg_game_over", comment: "Game over message")
         }
-        // 如果所有數字都變成 0，則視為勝利
-        if board.flatMap({ $0 }).allSatisfy({ $0 == 0 }) {
+        if winAchieved {
             gameOver = true
-            message = "You Win!"
+            message = NSLocalizedString("msg_you_win", comment: "Victory message")
+            return
         }
     }
     
@@ -117,7 +141,6 @@ class Game2048Reverse: ObservableObject {
     
     func moveRight() {
         for r in 0..<size {
-            // 將 row 轉成 Array 後再處理
             var row = Array(board[r].reversed())
             row = mergeLine(row)
             board[r] = Array(row.reversed())
@@ -136,7 +159,6 @@ class Game2048Reverse: ObservableObject {
     
     func moveDown() {
         for c in 0..<size {
-            // 將 column 轉成 Array 後再處理
             var col = Array((0..<size).map { board[$0][c] }.reversed())
             col = mergeLine(col)
             let newCol = Array(col.reversed())
@@ -149,10 +171,10 @@ class Game2048Reverse: ObservableObject {
 
 // MARK: - UI Components
 
-// 因為 Reverse 模式不使用障礙，所以直接使用 TileView 顯示數字
+// 單一方塊視圖 (Reverse 模式)
 struct TileViewReverse: View {
     let value: Int
-    let isObstacle: Bool
+    let isObstacle: Bool = false // Reverse 模式不使用障礙
     
     var body: some View {
         ZStack {
@@ -169,9 +191,6 @@ struct TileViewReverse: View {
     }
     
     var backgroundColor: Color {
-        if isObstacle {
-            return Color.red
-        }
         if value == 0 {
             return Color(red: 205/255, green: 193/255, blue: 180/255)
         }
@@ -179,21 +198,23 @@ struct TileViewReverse: View {
     }
     
     func tileBackground(for number: Int) -> Color {
+        // 這裡僅示範 2048 與 4098 兩種顏色，其他數值可依需求擴充
         switch number {
         case 2048: return Color(red: 237/255, green: 194/255, blue: 46/255)
+        case 4098: return Color(red: 200/255, green: 150/255, blue: 50/255)
         default:   return Color(red: 238/255, green: 228/255, blue: 218/255)
         }
     }
     
     var textColor: Color {
-        if value == 2048 {
+        if value == 2048 || value == 4098 {
             return Color.white
         }
         return Color.black
     }
 }
 
-// 為 Reverse 模式新增專用的棋盤視圖
+// 棋盤視圖
 struct GameBoardReverseView: View {
     @ObservedObject var game: Game2048Reverse
     
@@ -202,8 +223,7 @@ struct GameBoardReverseView: View {
             ForEach(0..<game.size, id: \.self) { r in
                 HStack(spacing: 8) {
                     ForEach(0..<game.size, id: \.self) { c in
-                        // Reverse 模式沒有障礙標示，所以 isObstacle 固定為 false
-                        TileViewReverse(value: game.board[r][c], isObstacle: false)
+                        TileViewReverse(value: game.board[r][c])
                     }
                 }
             }
@@ -215,45 +235,107 @@ struct GameBoardReverseView: View {
     }
 }
 
-// MARK: - 主遊戲畫面
-struct ReverseView: View {
-    @StateObject private var game = Game2048Reverse()
+// MARK: - 主遊戲畫面 (參考 Classic UI 版型)
+struct ReverseGameViewShared: View {
+    @State private var selectedDifficulty: Difficulty = .easy
+    @StateObject private var game = Game2048Reverse(difficulty: .easy)
+    
+    // 用於觸發勝利動畫與防止重複播放音效的 state
+    @State private var animateVictory: Bool = false
+    @State private var soundPlayed: Bool = false
     
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Reverse 2048")
-                .font(.largeTitle)
-            Spacer()
-            GameBoardReverseView(game: game)
-            Spacer()
-            if game.gameOver {
-                Text(game.message)
-                    .font(.title)
-                    .foregroundColor(.red)
-            }
-            Button("New Game") {
-                game.resetGame()
-            }
-            .padding()
-        }
-        .gesture(DragGesture(minimumDistance: 20).onEnded { value in
-            let horizontal = value.translation.width
-            let vertical = value.translation.height
-            withAnimation {
-                if abs(horizontal) > abs(vertical) {
-                    game.move(horizontal < 0 ? .left : .right)
-                } else {
-                    game.move(vertical < 0 ? .up : .down)
+        ZStack {
+            Color(red: 250/255, green: 248/255, blue: 239/255)
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack(spacing: 20) {
+                // 難易度選擇
+                Picker("label_difficulty", selection: $selectedDifficulty) {
+                    ForEach(Difficulty.allCases) { difficulty in
+                        difficulty.label.tag(difficulty)
+                    }
                 }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding()
+                .onChange(of: selectedDifficulty) { newDifficulty in
+                    game.resetGame(newDifficulty: newDifficulty)
+                    animateVictory = false
+                    soundPlayed = false
+                }
+                
+                // 標題
+                Text("title_2048")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                
+                Spacer()
+                GameBoardReverseView(game: game)
+                Spacer()
+                
+                if game.gameOver {
+                    Text(game.message)
+                        .font(.title)
+                        .foregroundColor(.red)
+                        .padding()
+                }
+                
+                Button(action: {
+                    withAnimation {
+                        game.resetGame()
+                        animateVictory = false
+                        soundPlayed = false
+                    }
+                }) {
+                    Text("btn_new_game")
+                        .fontWeight(.bold)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color(red: 143/255, green: 122/255, blue: 102/255))
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                }
+                .padding(.horizontal)
             }
-        })
+            // 手勢操作
+            .gesture(DragGesture(minimumDistance: 20).onEnded { value in
+                let horizontal = value.translation.width
+                let vertical = value.translation.height
+                withAnimation {
+                    if abs(horizontal) > abs(vertical) {
+                        game.move(horizontal < 0 ? .left : .right)
+                    } else {
+                        game.move(vertical < 0 ? .up : .down)
+                    }
+                }
+            })
+            
+            // 勝利動畫覆蓋層（當遊戲結束且勝利時顯示）
+            if game.gameOver && game.message == NSLocalizedString("msg_you_win", comment: "Victory message") {
+                VictoryOverlayView(animate: $animateVictory)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .background(Color.black.opacity(0.3))
+                    .edgesIgnoringSafeArea(.all)
+                    .onAppear {
+                        if !soundPlayed {
+                            SoundManager.shared.playVictorySound()
+                            soundPlayed = true
+                        }
+                    }
+            }
+        }
+        
+        // Banner 廣告（假設 BannerAdView 已定義）
+        BannerAdView(adUnitID: "ca-app-pub-9275380963550837/8710922047")
+            .frame(height: 50)
     }
 }
+
+
 
 // MARK: - 預覽
-struct ReverseView_Previews: PreviewProvider {
+struct ReverseGameViewShared_Previews: PreviewProvider {
     static var previews: some View {
-        ReverseView()
+        ReverseGameViewShared()
     }
 }
-

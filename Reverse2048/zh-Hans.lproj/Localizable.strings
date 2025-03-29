@@ -6,6 +6,7 @@
 //
 
 "reverse_2048" = "反转 2048";
+"traditional" = "传统模式";
 "classic" = "经典模式";
 "level_promax" = "ProMax 难度";
 "title_2048" = "反转版";

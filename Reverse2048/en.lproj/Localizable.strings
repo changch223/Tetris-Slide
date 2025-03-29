@@ -6,6 +6,7 @@
 //
 
 "reverse_2048" = "Reverse 2048";
+"traditional" = "Traditional Mode";
 "classic" = "Classic";
 "level_promax" = "Level ProMax";
 "title_2048" = "Reverse2048";

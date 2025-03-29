@@ -394,7 +394,7 @@ struct GameHeaderViewProMax: View {
     
     var body: some View {
         HStack {
-            Text("2048")
+            Text("title_2048")
                 .font(.largeTitle)
                 .fontWeight(.heavy)
                 .foregroundColor(Color(red: 119/255, green: 110/255, blue: 101/255))
