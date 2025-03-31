@@ -294,31 +294,32 @@ class Game2048ObstacleProMAX: ObservableObject {
 }
 
 // MARK: - UI Components
-
+// 單一方塊視圖，統一風格：圓角 12、系統字型、暗色背景（空格使用較深色）
 struct TileViewProMax: View {
     let value: Int
     let isObstacle: Bool
     
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 8)
+            RoundedRectangle(cornerRadius: 12)
                 .fill(backgroundColor)
             if value != 0 {
                 Text("\(value)")
-                    .font(.system(size: 24, weight: .bold))
+                    .font(.system(size: 24, weight: .heavy, design: .rounded))
                     .foregroundColor(textColor)
             }
         }
         .frame(width: 70, height: 70)
-        .shadow(color: Color.black.opacity(0.2), radius: 3, x: 2, y: 2)
+        .shadow(color: Color.black.opacity(0.3), radius: 4, x: 2, y: 2)
     }
     
     var backgroundColor: Color {
         if isObstacle {
-            return Color.red
+            return Color.red.opacity(0.8)
         }
         if value == 0 {
-            return Color(red: 205/255, green: 193/255, blue: 180/255)
+            // 空白格採用較深色調，適合暗色主題
+            return Color(red: 80/255, green: 80/255, blue: 100/255)
         }
         return tileBackground(for: value)
     }
@@ -348,24 +349,7 @@ struct TileViewProMax: View {
     }
 }
 
-// MARK: - 勝利動畫覆蓋層
-struct VictoryOverlayView: View {
-    @Binding var animate: Bool
-
-    var body: some View {
-        Text("🎉 Victory! 🎉")
-            .font(.largeTitle)
-            .fontWeight(.heavy)
-            .foregroundColor(.green)
-            .scaleEffect(animate ? 1.2 : 0.8)
-            .opacity(animate ? 1.0 : 0.5)
-            .animation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true), value: animate)
-            .onAppear {
-                animate = true
-            }
-    }
-}
-
+// 棋盤視圖，採用深色紫藍漸層背景
 struct GameBoardViewProMax: View {
     @ObservedObject var game: Game2048ObstacleProMAX
     
@@ -376,67 +360,103 @@ struct GameBoardViewProMax: View {
                     ForEach(0..<game.size, id: \.self) { c in
                         let isObstacle = (r == game.size - 1 && c == game.size - 1)
                         TileViewProMax(value: isObstacle ? game.obstacle : game.board[r][c],
-                                 isObstacle: isObstacle)
+                                       isObstacle: isObstacle)
                     }
                 }
             }
         }
         .padding(8)
-        .background(Color(red: 187/255, green: 173/255, blue: 160/255))
+        .background(
+            LinearGradient(
+                gradient: Gradient(colors: [
+                    Color(red: 64/255, green: 64/255, blue: 122/255),
+                    Color(red: 38/255, green: 38/255, blue: 68/255)
+                ]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        )
         .cornerRadius(12)
         .shadow(radius: 5)
+        .padding()
     }
 }
 
+// 標題與狀態顯示區，統一風格：使用「tile_rewind」標題、系統字型、白色字體與紫藍漸層背景
 struct GameHeaderViewProMax: View {
     let remainingMoves: Int
     let remainingObstacle: Int
     
     var body: some View {
         HStack {
-            Text("title")
-                .font(.largeTitle)
-                .fontWeight(.heavy)
-                .foregroundColor(Color(red: 119/255, green: 110/255, blue: 101/255))
+            Text(LocalizedStringKey("tile_rewind"))
+                .font(.system(size: 34, weight: .heavy, design: .rounded))
+                .foregroundColor(.white)
             Spacer()
-            VStack(alignment: .trailing) {
-                Text("label_remaining_moves")
-                    .font(.subheadline)
-                    .foregroundColor(.white)
-                Text("\(remainingMoves)")
-                    .font(.headline)
-                    .foregroundColor(.white)
+            HStack(spacing: 8) {
+                VStack(alignment: .trailing) {
+                    Text(LocalizedStringKey("label_remaining_moves"))
+                        .font(.subheadline)
+                        .foregroundColor(.white)
+                    Text("\(remainingMoves)")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                }
+                .padding(8)
+                .background(
+                    LinearGradient(
+                        gradient: Gradient(colors: [Color.purple, Color.blue]),
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
+                .cornerRadius(12)
+                .shadow(radius: 3)
+                
+                VStack(alignment: .trailing) {
+                    Text(LocalizedStringKey("label_remaining_obstacle"))
+                        .font(.subheadline)
+                        .foregroundColor(.white)
+                    Text("\(remainingObstacle)")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                }
+                .padding(8)
+                .background(
+                    LinearGradient(
+                        gradient: Gradient(colors: [Color.purple, Color.blue]),
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
+                .cornerRadius(12)
+                .shadow(radius: 3)
             }
-            .padding(8)
-            .background(Color(red: 187/255, green: 173/255, blue: 160/255))
-            .cornerRadius(6)
-            VStack(alignment: .trailing) {
-                Text("label_remaining_obstacle")
-                    .font(.subheadline)
-                    .foregroundColor(.white)
-                Text("\(remainingObstacle)")
-                    .font(.headline)
-                    .foregroundColor(.white)
-            }
-            .padding(8)
-            .background(Color(red: 187/255, green: 173/255, blue: 160/255))
-            .cornerRadius(6)
         }
         .padding(.horizontal)
     }
 }
 
+
+// 主遊戲畫面，整體背景採用深色紫藍漸層，按鈕採用紫藍漸層背景
 struct GameViewSharedProMax: View {
     @State private var selectedDifficulty: Difficulty = .easy
     @StateObject private var game: Game2048ObstacleProMAX = Game2048ObstacleProMAX(difficulty: .easy)
-    // 新增用於觸發勝利動畫與防止重複播放音效的 state
     @State private var animateVictory: Bool = false
     @State private var soundPlayed: Bool = false
     
     var body: some View {
         ZStack {
-            Color(red: 250/255, green: 248/255, blue: 239/255)
-                .edgesIgnoringSafeArea(.all)
+            LinearGradient(
+                gradient: Gradient(colors: [
+                    Color(red: 64/255, green: 64/255, blue: 122/255),
+                    Color(red: 38/255, green: 38/255, blue: 68/255)
+                ]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .edgesIgnoringSafeArea(.all)
+            
             VStack(spacing: 20) {
                 // 難易度選擇
                 Picker("label_difficulty", selection: $selectedDifficulty) {
@@ -448,7 +468,6 @@ struct GameViewSharedProMax: View {
                 .padding()
                 .onChange(of: selectedDifficulty) { newDifficulty in
                     game.resetGame(newDifficulty: newDifficulty)
-                    // 重設動畫與音效播放旗標
                     animateVictory = false
                     soundPlayed = false
                 }
@@ -472,19 +491,16 @@ struct GameViewSharedProMax: View {
                         .padding()
                 }
                 Button(action: {
-                    // 設定廣告關閉後的回呼：重置遊戲
                     AdManager.shared.adDidDismissFullScreenContentCallback = {
                         game.resetGame()
                         animateVictory = false
                         soundPlayed = false
                     }
                     
-                    // 取得當前的 rootViewController
                     if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                        let root = windowScene.windows.first?.rootViewController {
                         AdManager.shared.showInterstitial(from: root)
                     } else {
-                        // 若取得失敗則直接重置遊戲
                         game.resetGame()
                         animateVictory = false
                         soundPlayed = false
@@ -494,9 +510,15 @@ struct GameViewSharedProMax: View {
                         .fontWeight(.bold)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color(red: 143/255, green: 122/255, blue: 102/255))
+                        .background(
+                            LinearGradient(
+                                gradient: Gradient(colors: [Color.purple, Color.blue]),
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
                         .foregroundColor(.white)
-                        .cornerRadius(8)
+                        .cornerRadius(12)
                 }
                 .padding(.horizontal)
             }
@@ -512,7 +534,6 @@ struct GameViewSharedProMax: View {
                 }
             })
             
-            // 當遊戲結束且勝利時顯示勝利動畫覆蓋層
             if game.gameOver &&
                 (game.message == NSLocalizedString("msg_you_win", comment: "Victory message") ||
                  game.message == NSLocalizedString("msg_obstacle_cleared", comment: "Obstacle cleared message")) {
@@ -527,10 +548,11 @@ struct GameViewSharedProMax: View {
                         }
                     }
             }
-        }.onAppear {
-            // 載入第一支插頁廣告
+        }
+        .onAppear {
             AdManager.shared.loadInterstitial()
         }
+        
         BannerAdView(adUnitID: "ca-app-pub-9275380963550837/8710922047")
             .frame(height: 50)
     }
@@ -539,5 +561,24 @@ struct GameViewSharedProMax: View {
 struct GameViewSharedProMax_Previews: PreviewProvider {
     static var previews: some View {
         GameViewSharedProMax()
+    }
+}
+
+
+// MARK: - 勝利動畫覆蓋層
+struct VictoryOverlayView: View {
+    @Binding var animate: Bool
+
+    var body: some View {
+        Text("🎉 Victory! 🎉")
+            .font(.largeTitle)
+            .fontWeight(.heavy)
+            .foregroundColor(.green)
+            .scaleEffect(animate ? 1.2 : 0.8)
+            .opacity(animate ? 1.0 : 0.5)
+            .animation(Animation.easeInOut(duration: 1.0).repeatForever(autoreverses: true), value: animate)
+            .onAppear {
+                animate = true
+            }
     }
 }

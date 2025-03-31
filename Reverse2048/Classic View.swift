@@ -5,6 +5,7 @@
 //  Created by chang chiawei on 2025-03-28.
 //
 
+
 import SwiftUI
 
 enum Difficulty: String, CaseIterable, Identifiable {
@@ -118,9 +119,6 @@ class Game2048Obstacle: ObservableObject {
             if i < arr.count - 1 && arr[i] == arr[i+1] {
                 // 合併：例如 2 + 2 = 4
                 result.append(arr[i] * 2)
-                
-                
-                
                 skip = true
             } else {
                 result.append(arr[i])
@@ -131,7 +129,6 @@ class Game2048Obstacle: ObservableObject {
         }
         return result
     }
-
     
     // 每次滑動都扣除一步，不論棋盤是否有變化
     func move(_ direction: SwipeDirection) {
@@ -182,25 +179,17 @@ class Game2048Obstacle: ObservableObject {
     
     func moveRight() {
         for r in 0..<size {
-            // 如果不是最下面那一行，照一般 4×4 邏輯處理
             if r != size - 1 {
                 var row = board[r]
                 row.reverse()
                 row = mergeLine(row)
                 row.reverse()
                 board[r] = row
-            }
-            // ★ 最下面一行 (r=3) ★
-            else {
-                // 只取左邊三格 (c=0..2)，排除障礙所在的 (3,3)
-                var rowSegment = Array(board[r][0..<(size-1)]) // (3,0), (3,1), (3,2)
-                
-                // 反轉 → 合併 → 再反轉
+            } else {
+                var rowSegment = Array(board[r][0..<(size-1)])
                 rowSegment.reverse()
                 rowSegment = mergeLine(rowSegment)
                 rowSegment.reverse()
-                
-                // 如果合併完最後一格 != 0，代表它想再「往右」進入障礙
                 if let A = rowSegment.last, A != 0 {
                     if obstacle > A {
                         obstacle -= A * A
@@ -211,17 +200,13 @@ class Game2048Obstacle: ObservableObject {
                         gameOver = true
                     }
                 }
-                
-                // 回填前 3 格
                 for c in 0..<(size-1) {
                     board[r][c] = rowSegment[c]
                 }
-                // 最右邊 (3,3) 永遠是障礙
                 board[r][size-1] = obstacle
             }
         }
     }
-
     
     func moveUp() {
         for c in 0..<size {
@@ -247,90 +232,73 @@ class Game2048Obstacle: ObservableObject {
         }
     }
     
-    
     func moveDown() {
         for c in 0..<size {
-            // 如果不是最右一欄，照一般 4×4 邏輯處理
             if c != size - 1 {
                 var col = [Int]()
                 for r in 0..<size {
                     col.append(board[r][c])
                 }
-                // 反轉 → 合併 → 再反轉，模擬「往下」移動
                 col.reverse()
                 col = mergeLine(col)
                 col.reverse()
-                
-                // 回填到原本的 board
                 for r in 0..<size {
                     board[r][c] = col[r]
                 }
-            }
-            // ★ 最右一欄 (c=3) ★
-            else {
-                // 只取上面三格 (r=0..2)，排除障礙所在的最底 row=3
+            } else {
                 var col = [Int]()
                 for r in 0..<(size-1) {
-                    col.append(board[r][c])  // 收集 (0,3)、(1,3)、(2,3)
+                    col.append(board[r][c])
                 }
-                // 反轉 → 合併 → 再反轉
                 col.reverse()
                 col = mergeLine(col)
                 col.reverse()
-                
-                // 如果合併完最後一格 != 0，代表它想再「往下」進入障礙
                 if let A = col.last, A != 0 {
                     if obstacle > A {
                         obstacle -= A * A
-                        col[col.count - 1] = 0  // 把那格清空
+                        col[col.count - 1] = 0
                     }
-                    // 如果障礙扣到 0 或以下 → 勝利
                     if obstacle <= 0 {
                         message = NSLocalizedString("msg_obstacle_cleared", comment: "Message when the obstacle has been cleared")
                         gameOver = true
                     }
                 }
-                
-                // 把合併後的結果放回前 3 格
                 for r in 0..<(size-1) {
                     board[r][c] = col[r]
                 }
-                // 最下面 (3,3) 永遠是障礙
                 board[size-1][c] = obstacle
             }
         }
     }
-
 }
 
 // MARK: - UI Components
 
-// 單一方塊視圖，依據數值顯示不同背景與文字顏色，障礙方塊則特別標示
+// 單一方塊視圖
 struct TileView: View {
     let value: Int
     let isObstacle: Bool
     
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 8)
+            RoundedRectangle(cornerRadius: 12)
                 .fill(backgroundColor)
             if value != 0 {
                 Text("\(value)")
-                    .font(.system(size: 24, weight: .bold))
+                    .font(.system(size: 24, weight: .heavy, design: .rounded))
                     .foregroundColor(textColor)
             }
         }
         .frame(width: 70, height: 70)
-        .shadow(color: Color.black.opacity(0.2), radius: 3, x: 2, y: 2)
+        .shadow(color: Color.black.opacity(0.3), radius: 4, x: 2, y: 2)
     }
     
     var backgroundColor: Color {
         if isObstacle {
-            return Color.red
+            return Color.red.opacity(0.8)
         }
         if value == 0 {
-            // 空格
-            return Color(red: 205/255, green: 193/255, blue: 180/255)
+            return Color(red: 80/255, green: 80/255, blue: 100/255)
         }
         return tileBackground(for: value)
     }
@@ -360,7 +328,7 @@ struct TileView: View {
     }
 }
 
-// 棋盤視圖，模擬官方版 2048 的棋盤外框與格子間距
+// 棋盤視圖
 struct GameBoardView: View {
     @ObservedObject var game: Game2048Obstacle
     
@@ -377,50 +345,78 @@ struct GameBoardView: View {
             }
         }
         .padding(8)
-        .background(Color(red: 187/255, green: 173/255, blue: 160/255))
+        .background(
+            LinearGradient(
+                gradient: Gradient(colors: [
+                    Color(red: 64/255, green: 64/255, blue: 122/255),
+                    Color(red: 38/255, green: 38/255, blue: 68/255)
+                ]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        )
         .cornerRadius(12)
         .shadow(radius: 5)
+        .padding()
     }
 }
 
-// 標題與狀態顯示區，顯示「剩餘步數」與「剩餘障礙」
+// 標題與狀態顯示區
 struct GameHeaderView: View {
     let remainingMoves: Int
     let remainingObstacle: Int
     
     var body: some View {
         HStack {
-            Text("title")
-                .font(.largeTitle)
-                .fontWeight(.heavy)
-                .foregroundColor(Color(red: 119/255, green: 110/255, blue: 101/255))
+            // 修改標題，使用首頁一致的「tile_rewind」與白色字體
+            Text(LocalizedStringKey("tile_rewind"))
+                .font(.system(size: 34, weight: .heavy, design: .rounded))
+                .foregroundColor(.white)
             Spacer()
-            VStack(alignment: .trailing) {
-                Text("label_remaining_moves")
-                    .font(.subheadline)
-                    .foregroundColor(.white)
-                Text("\(remainingMoves)")
-                    .font(.headline)
-                    .foregroundColor(.white)
+            HStack(spacing: 8) {
+                VStack(alignment: .trailing) {
+                    Text(LocalizedStringKey("label_remaining_moves"))
+                        .font(.subheadline)
+                        .foregroundColor(.white)
+                    Text("\(remainingMoves)")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                }
+                .padding(8)
+                .background(
+                    LinearGradient(
+                        gradient: Gradient(colors: [Color.purple, Color.blue]),
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
+                .cornerRadius(12)
+                .shadow(radius: 3)
+                
+                VStack(alignment: .trailing) {
+                    Text(LocalizedStringKey("label_remaining_obstacle"))
+                        .font(.subheadline)
+                        .foregroundColor(.white)
+                    Text("\(remainingObstacle)")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                }
+                .padding(8)
+                .background(
+                    LinearGradient(
+                        gradient: Gradient(colors: [Color.purple, Color.blue]),
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
+                .cornerRadius(12)
+                .shadow(radius: 3)
             }
-            .padding(8)
-            .background(Color(red: 187/255, green: 173/255, blue: 160/255))
-            .cornerRadius(6)
-            VStack(alignment: .trailing) {
-                Text("label_remaining_obstacle")
-                    .font(.subheadline)
-                    .foregroundColor(.white)
-                Text("\(remainingObstacle)")
-                    .font(.headline)
-                    .foregroundColor(.white)
-            }
-            .padding(8)
-            .background(Color(red: 187/255, green: 173/255, blue: 160/255))
-            .cornerRadius(6)
         }
         .padding(.horizontal)
     }
 }
+
 
 // 主遊戲畫面，包含難易度選擇、狀態顯示、棋盤、遊戲規則說明與手勢操作
 struct GameViewShared: View {
@@ -432,8 +428,17 @@ struct GameViewShared: View {
     
     var body: some View {
         ZStack {
-            Color(red: 250/255, green: 248/255, blue: 239/255)
-                .edgesIgnoringSafeArea(.all)
+            // 修改背景為暗色紫藍漸層
+            LinearGradient(
+                gradient: Gradient(colors: [
+                    Color(red: 64/255, green: 64/255, blue: 122/255),
+                    Color(red: 38/255, green: 38/255, blue: 68/255)
+                ]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .edgesIgnoringSafeArea(.all)
+            
             VStack(spacing: 20) {
                 // 難易度選擇
                 Picker("label_difficulty", selection: $selectedDifficulty) {
@@ -443,20 +448,15 @@ struct GameViewShared: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding()
-                // 切換難易度時，建立新的遊戲實例
                 .onChange(of: selectedDifficulty) { newDifficulty in
-                    // resetGame() 中處理難易度相關的邏輯
-                    game.resetGame(newDifficulty: newDifficulty) // 或者重新指派一個新實例
-                    // 重設動畫與音效播放旗標
+                    game.resetGame(newDifficulty: newDifficulty)
                     animateVictory = false
                     soundPlayed = false
                 }
                 
-                // 傳入剩餘步數 (maxMoves - moveCount) 與障礙數值
                 GameHeaderView(remainingMoves: game.maxMoves - game.moveCount,
                                remainingObstacle: game.obstacle)
                 
-                // 遊戲規則說明 (包含合併示例)
                 Text("rules_classic_combined")
                     .font(.footnote)
                     .foregroundColor(.gray)
@@ -474,19 +474,16 @@ struct GameViewShared: View {
                 }
                 Button(action: {
                     withAnimation {
-                        // 設定廣告關閉後的回呼：重置遊戲
                         AdManager.shared.adDidDismissFullScreenContentCallback = {
                             game.resetGame()
                             animateVictory = false
                             soundPlayed = false
                         }
                     }
-                    // 取得當前的 rootViewController
                     if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                        let root = windowScene.windows.first?.rootViewController {
                         AdManager.shared.showInterstitial(from: root)
                     } else {
-                        // 若取得失敗則直接重置遊戲
                         game.resetGame()
                         animateVictory = false
                         soundPlayed = false
@@ -496,9 +493,16 @@ struct GameViewShared: View {
                         .fontWeight(.bold)
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color(red: 143/255, green: 122/255, blue: 102/255))
+                        // 修改按鈕背景為紫藍漸層
+                        .background(
+                            LinearGradient(
+                                gradient: Gradient(colors: [Color.purple, Color.blue]),
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
                         .foregroundColor(.white)
-                        .cornerRadius(8)
+                        .cornerRadius(12)
                 }
                 .padding(.horizontal)
             }
@@ -514,7 +518,6 @@ struct GameViewShared: View {
                 }
             })
             
-            // 當遊戲結束且勝利時顯示勝利動畫覆蓋層
             if game.gameOver && (
                 game.message == NSLocalizedString("msg_you_win", comment: "Victory message") ||
                 game.message == NSLocalizedString("msg_obstacle_cleared", comment: "Obstacle cleared victory message")
@@ -530,8 +533,8 @@ struct GameViewShared: View {
                         }
                     }
             }
-        }.onAppear {
-            // 載入第一支插頁廣告
+        }
+        .onAppear {
             AdManager.shared.loadInterstitial()
         }
         
