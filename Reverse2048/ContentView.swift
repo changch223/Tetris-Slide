@@ -42,7 +42,7 @@ struct ContentView: View {
 
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             ZStack {
                 // 背景色
                 Color(red: 250/255, green: 248/255, blue: 239/255)
@@ -79,7 +79,7 @@ struct ContentView: View {
                         }
                     
                     // 標題
-                    Text(LocalizedStringKey("reverse_2048"))
+                    Text(LocalizedStringKey("tile_rewind"))
                         .font(.largeTitle)
                         .fontWeight(.heavy)
                         .foregroundColor(Color(red: 119/255, green: 110/255, blue: 101/255))

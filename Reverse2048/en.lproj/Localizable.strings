@@ -4,30 +4,44 @@
 //
 //  Created by chang chiawei on 2025-03-29.
 //
+"tile_rewind" = "Number Clash: Reverse Mode - Ultra Hard Edition";
+"traditional" = "Classic Reverse Mode";
+"classic" = "Standard Mode (You’ll Probably Cry)";
+"level_promax" = "ProMax Mode (For True Heroes)";
+"title" = "Number Clash";
 
-"reverse_2048" = "Reverse 2048";
-"traditional" = "Traditional Mode";
-"classic" = "Classic";
-"level_promax" = "Level ProMax";
-"title_2048" = "Reverse2048";
-"label_remaining_moves" = "Remaining Moves";
-"label_remaining_obstacle" = "Remaining Obstacle";
-"msg_moves_exhausted" = "You've run out of moves. Game over!";
-"msg_you_win" = "🎉 You Win!";
-"msg_game_over"= "Game Over";
-"msg_obstacle_cleared" = "Congratulations! Obstacle cleared! You Win!";
-"btn_new_game" = "New Game";
-"label_difficulty" = "Difficulty";
-"difficulty_easy" = "Easy";
-"difficulty_medium" = "Medium";
-"label_game_rules" = "Game Rules:";
-"rule_classic_1" = "1. Slide tiles to merge identical numbers (e.g. 2 + 2 = 4).";
-"rule_classic_2" = "2. The red tile is an obstacle, its initial value depends on the difficulty (Easy: 2048, Medium: 4096).";
-"rule_classic_3" = "3. When a tile merges into the obstacle, subtract the tile's square from it (e.g. 2048 - 2² = 2044).";
-"rule_classic_4" = "4. If the obstacle's value drops to 0 or below, you win; if you reach the move limit, you lose.";
-"rule_promax_1" = "1. Slide tiles to merge: identical numbers become the square of that number, different numbers become their absolute difference.";
-"rule_promax_3" = "3. When a tile moves downward into the obstacle, subtract the tile's square from the obstacle.";
+// In-game labels
+"label_remaining_moves" = "Moves Left (Hang in there!)";
+"label_remaining_obstacle" = "Obstacle Value (Still standing...)";
 
-"rules_classic_combined" = "Classic Mode Rules:\n1. Slide tiles with the same number to merge them (e.g., 2 + 2 = 4).\n2.  When a tile merges with an obstacle, subtract its square from the obstacle (e.g., 2048 - 2² = 2044).\n3. Win by reducing the obstacle to 0 or below; lose if you run out of moves.";
+// System messages
+"msg_moves_exhausted" = "Oh no! Out of moves... Victory slipped away";
+"msg_you_win" = "🎉 You actually won?! You legend!";
+"msg_game_over"= "Game Over! Take a breath, try again?";
+"msg_obstacle_cleared" = "Obstacle cleared! You just destroyed math!";
 
-"rules_combinedProMax" = "ProMax Mode Rules:\n1. Merge same numbers into their square; different numbers merge into the absolute value of their difference.\n2.  When tiles merge downward into obstacles, subtract the square of the number from the obstacle.\n3. Win by reducing the obstacle to 0 or below; lose if you run out of moves.";
+// Buttons & Labels
+"btn_new_game" = "Play Again!";
+"label_difficulty" = "Challenge Level";
+
+// Difficulty levels
+"difficulty_easy" = "Easy (Just a warm-up)";
+"difficulty_medium" = "Medium (Getting spicy)";
+
+// Game rules label
+"label_game_rules" = "⚠️ Game Rules (Read or cry later)";
+
+// Classic rules
+"rule_classic_1" = "1. Swipe to merge same-number tiles (e.g. 2 + 2 = 4, easy math)";
+"rule_classic_2" = "2. Red tiles are obstacles. The higher the number, the tougher they are.";
+"rule_classic_3" = "3. Smash into obstacles to reduce their value by your number squared!";
+"rule_classic_4" = "4. Obstacle hits 0 = win; moves hit 0 = lose 😵";
+
+// ProMax rules
+"rule_promax_1" = "1. Same numbers → squared! Different numbers → absolute difference (math hell)";
+"rule_promax_3" = "2. Drop tiles downward into obstacles to subtract the square of your number";
+
+// Combined rules
+"rules_classic_combined" = "【Reverse Mode Rules】\n1. Merge same numbers (e.g. 2 + 2 = 4).\n2. Hit obstacles to subtract your number squared.\n3. Clear the obstacle = win; run out of moves = loss. Cry a bit.";
+
+"rules_combinedProMax" = "【ProMax Mode Rules】\n1. Same numbers → square; different numbers → absolute difference.\n2. Drop tiles into obstacles to subtract the square.\n3. Zero obstacle = victory; zero moves = tragedy.";

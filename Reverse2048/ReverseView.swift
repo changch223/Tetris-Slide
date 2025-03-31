@@ -263,9 +263,9 @@ struct ReverseGameViewShared: View {
                     animateVictory = false
                     soundPlayed = false
                 }
-                
+                Spacer()
                 // 標題
-                Text("title_2048")
+                Text("title")
                     .font(.largeTitle)
                     .fontWeight(.heavy)
                     .foregroundColor(Color(red: 119/255, green: 110/255, blue: 101/255))
