@@ -1,0 +1,48 @@
+//
+//  Localizable.strings
+//  NumberClash
+//
+//  Created by chang chiawei on 2025-03-29.
+//
+
+"tile_rewind" = "数字碰撞：逆向反转超难版";
+"traditional" = "传统逆转模式";
+"classic" = "经典模式（你会想哭）";
+"level_promax" = "ProMax 难度（勇者限定）";
+"title" = "数字碰撞";
+
+// 游戏内标签
+"label_remaining_moves" = "剩余步数（坚持住啊！）";
+"label_remaining_obstacle" = "剩余障碍值（它还没倒！）";
+
+// 系统提示信息
+"msg_moves_exhausted" = "啊！步数没了……你和胜利擦肩而过";
+"msg_you_win" = "🎉 你真的赢了？！不愧是神！";
+"msg_game_over"= "游戏结束！休息一下，再来一局？";
+"msg_obstacle_cleared" = "障碍清空！你成功教数学做人！";
+
+// 按钮 & 标签
+"btn_new_game" = "再来一次！";
+"label_difficulty" = "挑战强度";
+
+// 难度选项
+"difficulty_easy" = "简单（热身而已）";
+"difficulty_medium" = "中等（开始有点辣）";
+
+// 游戏规则标签
+"label_game_rules" = "⚠️ 游戏规则（建议先看，不然你会哭）";
+
+// 规则描述 - 经典
+"rule_classic_1" = "1. 滑动方块合并相同数字（例：2 + 2 = 4，没错你数学超棒）";
+"rule_classic_2" = "2. 红色方块是障碍，它超级硬，数值越高越难搞";
+"rule_classic_3" = "3. 方块撞上障碍，障碍会减少撞它的数字平方（是平方哦）";
+"rule_classic_4" = "4. 障碍归零 = 你赢；步数归零 = 它赢 😵";
+
+// 规则描述 - ProMax
+"rule_promax_1" = "1. 相同数字 → 平方！不同数字 → 差值绝对值（数学地狱模式）";
+"rule_promax_3" = "2. 方块往下砸到障碍，障碍会减去方块数字的平方";
+
+// 模式规则总结
+"rules_classic_combined" = "【逆转模式规则】\n1. 合并相同数字（2 + 2 = 4）。\n2. 撞到障碍会减少障碍值（减去平方）。\n3. 障碍清零即胜；步数用完就输，哭哭。";
+
+"rules_combinedProMax" = "【高阶挑战规则】\n1. 相同数字合成平方；不同数字变为差值绝对值。\n2. 方块向下合并至障碍时，障碍减少该数字平方。\n3. 障碍清零你赢，步数清零你哭。";
