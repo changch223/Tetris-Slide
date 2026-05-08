@@ -64,6 +64,7 @@ A "line" counts whether it's a row OR a column — clear them mixed for combos.
 ## Links
 
 - 📨 **Support / サポート** — [SUPPORT.md](./SUPPORT.md)
+- 🔒 **Privacy Policy / プライバシーポリシー** — [PRIVACY.md](./PRIVACY.md)
 - 🐛 **Bugs / 不具合報告** — [GitHub Issues](https://github.com/changch223/reverse2048/issues)
 
 ---
