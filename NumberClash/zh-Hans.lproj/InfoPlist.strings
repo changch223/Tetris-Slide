@@ -1,9 +1,2 @@
-//
-//  InfoPlist.strings
-//  NumberClash
-//
-//  Created by chang chiawei on 2025-03-28.
-//
-
-CFBundleDisplayName = "数字碰撞：逆向反转超难版";
-
+CFBundleDisplayName = "俄罗斯方块滑动";
+NSUserTrackingUsageDescription = "该标识符用于向您推送更相关的广告。即使拒绝授权,所有游戏功能仍然可用。";

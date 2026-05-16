@@ -1,47 +1,33 @@
-//
-//  Localizable.strings
-//  NumberClash
-//
-//  Created by chang chiawei on 2025-03-29.
-//
-"tile_rewind" = "Number Clash: Reverse Mode - Ultra Hard Edition";
-"traditional" = "Classic Reverse Mode";
-"classic" = "Standard Mode (You’ll Probably Cry)";
-"level_promax" = "ProMax Mode (For True Heroes)";
-"title" = "Number Clash";
+/* Tetris Slide Game (10x10) — English */
 
-// In-game labels
-"label_remaining_moves" = "Moves Left (Hang in there!)";
-"label_remaining_obstacle" = "Obstacle Value (Still standing...)";
+"KEY_APP_TITLE"       = "Tetris Slide";
+"KEY_APP_TAGLINE"     = "Slide blocks. Clear lines. Beat your high score.";
 
-// System messages
-"msg_moves_exhausted" = "Oh no! Out of moves... Victory slipped away";
-"msg_you_win" = "🎉 You actually won?! You legend!";
-"msg_game_over"= "Game Over! Take a breath, try again?";
-"msg_obstacle_cleared" = "Obstacle cleared! You just destroyed math!";
+"KEY_PLAY"            = "PLAY";
+"KEY_SETTINGS"        = "Settings";
+"KEY_ABOUT"           = "About";
 
-// Buttons & Labels
-"btn_new_game" = "Play Again!";
-"label_difficulty" = "Challenge Level";
+"KEY_HUD_SCORE"       = "SCORE";
+"KEY_HUD_HIGH_SCORE"  = "HIGH";
+"KEY_NEXT"            = "NEXT";
+"KEY_ROTATE"          = "Rotate";
+"KEY_MAIN_MENU"       = "Menu";
 
-// Difficulty levels
-"difficulty_easy" = "Easy (Just a warm-up)";
-"difficulty_medium" = "Medium (Getting spicy)";
+"KEY_GAMEOVER_TITLE"  = "GAME OVER";
+"KEY_NEW_HIGH_SCORE"  = "★ NEW HIGH SCORE ★";
+"KEY_PLAY_AGAIN"      = "Play Again";
 
-// Game rules label
-"label_game_rules" = "⚠️ Game Rules (Read or cry later)";
+"KEY_SETTINGS_FEEDBACK_HEADER" = "Feedback";
+"KEY_SETTINGS_SOUND"  = "Sound";
+"KEY_SETTINGS_HAPTICS" = "Haptics";
 
-// Classic rules
-"rule_classic_1" = "1. Swipe to merge same-number tiles (e.g. 2 + 2 = 4, easy math)";
-"rule_classic_2" = "2. Red tiles are obstacles. The higher the number, the tougher they are.";
-"rule_classic_3" = "3. Smash into obstacles to reduce their value by your number squared!";
-"rule_classic_4" = "4. Obstacle hits 0 = win; moves hit 0 = lose 😵";
+"KEY_ABOUT_TITLE"     = "Tetris Slide";
+"KEY_ABOUT_BODY_1"    = "A 10x10 puzzle that fuses 2048's slide mechanic with Tetris pieces. Swipe to slide every cell on the board, and clear horizontal rows to score.";
+"KEY_ABOUT_BODY_2"    = "Pieces appear automatically in random empty cells. The game ends when no piece can fit anymore.";
+"KEY_ABOUT_CREDITS"   = "© 2026. Independently designed and developed.";
 
-// ProMax rules
-"rule_promax_1" = "1. Same numbers → squared! Different numbers → absolute difference (math hell)";
-"rule_promax_3" = "2. Drop tiles downward into obstacles to subtract the square of your number";
-
-// Combined rules
-"rules_classic_combined" = "【Reverse Mode Rules】\n1. Merge same numbers (e.g. 2 + 2 = 4).\n2. Hit obstacles to subtract your number squared.\n3. Clear the obstacle = win; run out of moves = loss. Cry a bit.";
-
-"rules_combinedProMax" = "【ProMax Mode Rules】\n1. Same numbers → square; different numbers → absolute difference.\n2. Drop tiles into obstacles to subtract the square.\n3. Zero obstacle = victory; zero moves = tragedy.";
+"BOARD_A11Y_LABEL"    = "Game board, 10 by 10. Swipe in any direction to slide all blocks.";
+"KEY_A11Y_SWIPE_UP"    = "Swipe Up";
+"KEY_A11Y_SWIPE_DOWN"  = "Swipe Down";
+"KEY_A11Y_SWIPE_LEFT"  = "Swipe Left";
+"KEY_A11Y_SWIPE_RIGHT" = "Swipe Right";

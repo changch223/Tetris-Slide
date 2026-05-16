@@ -1,47 +1,33 @@
-//
-//  Localizable.strings
-//  NumberClash
-//
-//  Created by chang chiawei on 2025-03-29.
-//
-"tile_rewind" = "数字クラッシュ：逆転・超激ムズ版";
-"traditional" = "伝統的な逆転モード";
-"classic" = "クラシックモード（泣けるレベル）";
-"level_promax" = "ProMaxモード（勇者専用）";
-"title" = "数字クラッシュ";
+/* Tetris Slide Game (10x10) — 日本語 */
 
-// ゲーム内ラベル
-"label_remaining_moves" = "残りの手数（まだいける！）";
-"label_remaining_obstacle" = "残りの障害値（まだ立ってる！）";
+"KEY_APP_TITLE"       = "テトリス・スライド";
+"KEY_APP_TAGLINE"     = "スワイプでブロックを動かし、行を消してハイスコアを目指せ。";
 
-// システムメッセージ
-"msg_moves_exhausted" = "うわっ、手数ゼロ…勝利とすれ違った";
-"msg_you_win" = "🎉 勝った！？マジで！？神じゃん！";
-"msg_game_over"= "ゲームオーバー！ちょっと休んで再挑戦？";
-"msg_obstacle_cleared" = "障害クリア！数学をぶっ壊した！";
+"KEY_PLAY"            = "プレイ";
+"KEY_SETTINGS"        = "設定";
+"KEY_ABOUT"           = "このゲームについて";
 
-// ボタン & ラベル
-"btn_new_game" = "もう一回！";
-"label_difficulty" = "難易度レベル";
+"KEY_HUD_SCORE"       = "スコア";
+"KEY_HUD_HIGH_SCORE"  = "ハイスコア";
+"KEY_NEXT"            = "ネクスト";
+"KEY_ROTATE"          = "回転";
+"KEY_MAIN_MENU"       = "メニュー";
 
-// 難易度オプション
-"difficulty_easy" = "かんたん（ウォームアップ）";
-"difficulty_medium" = "ふつう（ちょっと辛口）";
+"KEY_GAMEOVER_TITLE"  = "ゲームオーバー";
+"KEY_NEW_HIGH_SCORE"  = "★ ハイスコア更新 ★";
+"KEY_PLAY_AGAIN"      = "もう一度";
 
-// ルールラベル
-"label_game_rules" = "⚠️ ゲームルール（読まないと泣くかも）";
+"KEY_SETTINGS_FEEDBACK_HEADER" = "フィードバック";
+"KEY_SETTINGS_SOUND"  = "効果音";
+"KEY_SETTINGS_HAPTICS" = "振動";
 
-// クラシックモード
-"rule_classic_1" = "1. 同じ数字のタイルをスワイプして合体（例：2 + 2 = 4、簡単でしょ）";
-"rule_classic_2" = "2. 赤いタイルは障害物。数値が高いと超手強い";
-"rule_classic_3" = "3. タイルが障害にぶつかると、その数字の2乗分ダメージ！";
-"rule_classic_4" = "4. 障害が0以下で勝利！手数0なら負け 😵";
+"KEY_ABOUT_TITLE"     = "テトリス・スライド";
+"KEY_ABOUT_BODY_1"    = "10x10 の盤面で、2048 のスワイプ操作とテトリスのピースを融合させたパズル。1 回のスワイプで全セルが端まで滑り、横一行が揃うと消えてスコアになります。";
+"KEY_ABOUT_BODY_2"    = "ピースはランダムな空きマスに自動配置されます。次のピースが盤面のどこにも置けなくなるとゲームオーバーです。";
+"KEY_ABOUT_CREDITS"   = "© 2026. 個人開発。";
 
-// ProMaxモード
-"rule_promax_1" = "1. 同じ数字 → 平方！違う数字 → 絶対値の差！（地獄の数学）";
-"rule_promax_3" = "2. タイルが下に落ちて障害に当たると、平方分のダメージ！";
-
-// モード別ルールまとめ
-"rules_classic_combined" = "【逆転モードルール】\n1. 同じ数字を合体（例：2 + 2 = 4）。\n2. 障害にぶつけると平方分ダメージ。\n3. 障害がゼロなら勝ち。手数ゼロなら終了〜。";
-
-"rules_combinedProMax" = "【上級者モードルール】\n1. 同じ数字 → 平方、違う数字 → 絶対値の差！\n2. タイルが下に落ちて障害にぶつかると平方ダメージ。\n3. 障害ゼロなら勝利、手数ゼロなら涙。";
+"BOARD_A11Y_LABEL"    = "ゲーム盤面、10 × 10。任意の方向にスワイプして全ブロックを動かします。";
+"KEY_A11Y_SWIPE_UP"    = "上にスワイプ";
+"KEY_A11Y_SWIPE_DOWN"  = "下にスワイプ";
+"KEY_A11Y_SWIPE_LEFT"  = "左にスワイプ";
+"KEY_A11Y_SWIPE_RIGHT" = "右にスワイプ";

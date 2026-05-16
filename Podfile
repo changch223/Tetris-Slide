@@ -1,21 +1,14 @@
-# Uncomment the next line to define a global platform for your project
-platform :ios, '9.0'
+platform :ios, '17.6'
 
-target 'Reverse2048' do
-  # Comment the next line if you don't want to use dynamic frameworks
+target 'NumberClash' do
   use_frameworks!
 
-  # Pods for Reverse2048
-pod 'Google-Mobile-Ads-SDK'
+  pod 'Google-Mobile-Ads-SDK'
 
-
-  target 'Reverse2048Tests' do
+  target 'NumberClashTests' do
     inherit! :search_paths
-    # Pods for testing
   end
 
-  target 'Reverse2048UITests' do
-    # Pods for testing
+  target 'NumberClashUITests' do
   end
-
 end

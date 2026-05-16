@@ -1,49 +1,33 @@
-//
-//  Localizable.strings
-//  NumberClash
-//
-//  Created by chang chiawei on 2025-03-29.
-//
+/* Tetris Slide Game (10x10) — 香港中文 */
 
-"tile_rewind" = "數字碰撞：逆向反轉超難版";
-"traditional" = "傳統逆轉模式";
-"classic" = "經典模式（你會想哭）";
-"level_promax" = "ProMax 難度（勇者限定）";
-"title" = "數字碰撞";
+"KEY_APP_TITLE"       = "俄羅斯方塊滑動";
+"KEY_APP_TAGLINE"     = "滑動方塊、消除整行、挑戰最高分數。";
 
+"KEY_PLAY"            = "開始";
+"KEY_SETTINGS"        = "設定";
+"KEY_ABOUT"           = "關於";
 
-// 遊戲內標籤
-"label_remaining_moves" = "剩餘步數（撐住啊！）";
-"label_remaining_obstacle" = "剩餘障礙值（還沒倒！）";
+"KEY_HUD_SCORE"       = "分數";
+"KEY_HUD_HIGH_SCORE"  = "最高";
+"KEY_NEXT"            = "下一個";
+"KEY_ROTATE"          = "旋轉";
+"KEY_MAIN_MENU"       = "選單";
 
-// 系統提示訊息
-"msg_moves_exhausted" = "啊！步數沒了...你跟勝利擦身而過";
-"msg_you_win" = "🎉 你真的贏了？！不愧是神！";
-"msg_game_over"= "遊戲結束！休息一下，再來一場？";
-"msg_obstacle_cleared" = "障礙清空！你成功打臉數學！";
+"KEY_GAMEOVER_TITLE"  = "遊戲結束";
+"KEY_NEW_HIGH_SCORE"  = "★ 新紀錄 ★";
+"KEY_PLAY_AGAIN"      = "再嚟一鋪";
 
-// 按鈕 & 標籤
-"btn_new_game" = "再來一次！";
-"label_difficulty" = "挑戰強度";
+"KEY_SETTINGS_FEEDBACK_HEADER" = "回饋";
+"KEY_SETTINGS_SOUND"  = "音效";
+"KEY_SETTINGS_HAPTICS" = "震動";
 
-// 難易度選項
-"difficulty_easy" = "簡單（暖身而已）";
-"difficulty_medium" = "中等（開始有點辣）";
+"KEY_ABOUT_TITLE"     = "俄羅斯方塊滑動";
+"KEY_ABOUT_BODY_1"    = "10x10 棋盤上,把 2048 嘅滑動玩法同俄羅斯方塊融合嘅解謎遊戲。滑一下,棋盤上全部方塊都會滑到盡頭;橫向一整行填滿就會消除攞分。";
+"KEY_ABOUT_BODY_2"    = "方塊會自動跌落棋盤上隨機嘅空位。當下一個方塊喺任何旋轉之下都放唔入嘅時候,遊戲結束。";
+"KEY_ABOUT_CREDITS"   = "© 2026. 獨立設計同開發。";
 
-// 遊戲規則標籤
-"label_game_rules" = "⚠️ 遊戲規則（先看！不然會哭）";
-
-// 規則描述 - 經典
-"rule_classic_1" = "1. 滑動方塊合併相同數字（例：2 + 2 = 4，沒錯你數學很好）";
-"rule_classic_2" = "2. 紅色方塊是障礙，它超頑強，數值越高越難搞";
-"rule_classic_3" = "3. 方塊撞到障礙，障礙會減掉你撞它的數字的平方（是平方！）";
-"rule_classic_4" = "4. 障礙變成 0 = 你贏；步數變 0 = 它贏 😵";
-
-// 規則描述 - ProMax
-"rule_promax_1" = "1. 相同數字 → 平方！不同數字 → 差值絕對值（數學開始陰間）";
-"rule_promax_3" = "2. 方塊往下砸到障礙，障礙會痛：-方塊數字的平方";
-
-// 模式規則總結
-"rules_classic_combined" = "【逆轉模式規則】\n1. 合併相同數字（2 + 2 = 4）。\n2. 撞到障礙就幫它扣血（減掉數字的平方）。\n3. 障礙值歸零就贏；步數歸零就輸，哭哭。";
-
-"rules_combinedProMax" = "【高階挑戰規則】\n1. 一樣數字合成平方；不一樣就變差值（再取絕對值）。\n2. 如果你把方塊往下扔到障礙，它就會扣平方的血。\n3. 障礙清空就過關；沒步數就等著被打臉。";
+"BOARD_A11Y_LABEL"    = "遊戲棋盤,10 × 10。向任何方向滑動,可以移動所有方塊。";
+"KEY_A11Y_SWIPE_UP"    = "向上滑";
+"KEY_A11Y_SWIPE_DOWN"  = "向下滑";
+"KEY_A11Y_SWIPE_LEFT"  = "向左滑";
+"KEY_A11Y_SWIPE_RIGHT" = "向右滑";

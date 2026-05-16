@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>This identifier helps us deliver more relevant ads. Declining still keeps every game feature available.</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-9275380963550837~5062486928</string>
 	<key>SKAdNetworkItems</key>
