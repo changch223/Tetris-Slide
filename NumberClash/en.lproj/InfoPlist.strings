@@ -1,9 +1,1 @@
-//
-//  InfoPlist.strings
-//  NumberClash
-//
-//  Created by chang chiawei on 2025-03-28.
-//
-
-CFBundleDisplayName = "Number Clash: Reverse ProMax";
-
+CFBundleDisplayName = "Tetris Slide";

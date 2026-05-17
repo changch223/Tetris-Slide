@@ -1,0 +1,33 @@
+# Xcode build outputs
+build/
+DerivedData/
+*.xcuserstate
+*.xcscheme.lck
+xcuserdata/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Packages/
+Package.pins
+Package.resolved
+
+# CocoaPods (vendored, but ignore caches)
+Pods/.build/
+
+# macOS
+.DS_Store
+Thumbs.db
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*.tmp
+
+# Logs
+*.log
+
+# Misc
+.env
+.env.*

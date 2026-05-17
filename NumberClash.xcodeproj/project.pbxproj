@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		506512CAAB448B2E71E1E555 /* Pods_Reverse2048.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B2BCCA3B858A797AD104FEC /* Pods_Reverse2048.framework */; };
-		575276BF2D97C28900E80CC6 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 575276BE2D97C28900E80CC6 /* GoogleMobileAds */; };
-		BB0ADBE9349F9AC1468C7638 /* Pods_Reverse2048Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44F1A458AD5CC494D376892A /* Pods_Reverse2048Tests.framework */; };
-		EC2875598B42B59416EDB78D /* Pods_Reverse2048_Reverse2048UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 470052F1C655F85E45215C32 /* Pods_Reverse2048_Reverse2048UITests.framework */; };
+		2AD8CBB18D123AC386471F9C /* Pods_NumberClashTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59DB0255BB0C51FE89CE8569 /* Pods_NumberClashTests.framework */; };
+		E02541A8A49003EC3E6D1CBE /* Pods_NumberClash.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F623463E82EB3C50A9D3261B /* Pods_NumberClash.framework */; };
+		F8E60184AF1528F231549DFE /* Pods_NumberClash_NumberClashUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8091B29BB2D0230B2BFCF8F /* Pods_NumberClash_NumberClashUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,17 +31,23 @@
 
 /* Begin PBXFileReference section */
 		17B7E5BFE0ABB1266168F78A /* Pods-Reverse2048Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reverse2048Tests.debug.xcconfig"; path = "Target Support Files/Pods-Reverse2048Tests/Pods-Reverse2048Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		27A8594A56A611B9820CDF81 /* Pods-NumberClashTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberClashTests.debug.xcconfig"; path = "Target Support Files/Pods-NumberClashTests/Pods-NumberClashTests.debug.xcconfig"; sourceTree = "<group>"; };
 		31AC3D47F5751EE252C409CF /* Pods-Reverse2048.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reverse2048.debug.xcconfig"; path = "Target Support Files/Pods-Reverse2048/Pods-Reverse2048.debug.xcconfig"; sourceTree = "<group>"; };
-		3B2BCCA3B858A797AD104FEC /* Pods_Reverse2048.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reverse2048.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		44F1A458AD5CC494D376892A /* Pods_Reverse2048Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reverse2048Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		470052F1C655F85E45215C32 /* Pods_Reverse2048_Reverse2048UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Reverse2048_Reverse2048UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		565A5B1664C2964445FEDCBC /* Pods-Reverse2048Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reverse2048Tests.release.xcconfig"; path = "Target Support Files/Pods-Reverse2048Tests/Pods-Reverse2048Tests.release.xcconfig"; sourceTree = "<group>"; };
 		575275E72D96FAAA00E80CC6 /* NumberClash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NumberClash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		575275FA2D96FAAB00E80CC6 /* NumberClashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NumberClashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		575276042D96FAAB00E80CC6 /* NumberClashUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NumberClashUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		59DB0255BB0C51FE89CE8569 /* Pods_NumberClashTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NumberClashTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		73FC795978C91F623D9F8547 /* Pods-NumberClash-NumberClashUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberClash-NumberClashUITests.debug.xcconfig"; path = "Target Support Files/Pods-NumberClash-NumberClashUITests/Pods-NumberClash-NumberClashUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		8F287A86751E7822DB728359 /* Pods-NumberClashTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberClashTests.release.xcconfig"; path = "Target Support Files/Pods-NumberClashTests/Pods-NumberClashTests.release.xcconfig"; sourceTree = "<group>"; };
 		91824F4F4B705D66D68F9D6A /* Pods-Reverse2048-Reverse2048UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reverse2048-Reverse2048UITests.debug.xcconfig"; path = "Target Support Files/Pods-Reverse2048-Reverse2048UITests/Pods-Reverse2048-Reverse2048UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		A0DC664C18073AF93EC5E33C /* Pods-NumberClash.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberClash.debug.xcconfig"; path = "Target Support Files/Pods-NumberClash/Pods-NumberClash.debug.xcconfig"; sourceTree = "<group>"; };
+		A35B80C5B651281252C5AD3A /* Pods-NumberClash.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberClash.release.xcconfig"; path = "Target Support Files/Pods-NumberClash/Pods-NumberClash.release.xcconfig"; sourceTree = "<group>"; };
 		B5CF5A0195469AC0BD294D66 /* Pods-Reverse2048.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reverse2048.release.xcconfig"; path = "Target Support Files/Pods-Reverse2048/Pods-Reverse2048.release.xcconfig"; sourceTree = "<group>"; };
+		CD4F6D77E78DD890C0E9A0D0 /* Pods-NumberClash-NumberClashUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NumberClash-NumberClashUITests.release.xcconfig"; path = "Target Support Files/Pods-NumberClash-NumberClashUITests/Pods-NumberClash-NumberClashUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D3492E1D07DE771C4B85C246 /* Pods-Reverse2048-Reverse2048UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reverse2048-Reverse2048UITests.release.xcconfig"; path = "Target Support Files/Pods-Reverse2048-Reverse2048UITests/Pods-Reverse2048-Reverse2048UITests.release.xcconfig"; sourceTree = "<group>"; };
+		D8091B29BB2D0230B2BFCF8F /* Pods_NumberClash_NumberClashUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NumberClash_NumberClashUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F623463E82EB3C50A9D3261B /* Pods_NumberClash.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NumberClash.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -81,8 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				575276BF2D97C28900E80CC6 /* GoogleMobileAds in Frameworks */,
-				506512CAAB448B2E71E1E555 /* Pods_Reverse2048.framework in Frameworks */,
+				E02541A8A49003EC3E6D1CBE /* Pods_NumberClash.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB0ADBE9349F9AC1468C7638 /* Pods_Reverse2048Tests.framework in Frameworks */,
+				2AD8CBB18D123AC386471F9C /* Pods_NumberClashTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC2875598B42B59416EDB78D /* Pods_Reverse2048_Reverse2048UITests.framework in Frameworks */,
+				F8E60184AF1528F231549DFE /* Pods_NumberClash_NumberClashUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +140,12 @@
 				D3492E1D07DE771C4B85C246 /* Pods-Reverse2048-Reverse2048UITests.release.xcconfig */,
 				17B7E5BFE0ABB1266168F78A /* Pods-Reverse2048Tests.debug.xcconfig */,
 				565A5B1664C2964445FEDCBC /* Pods-Reverse2048Tests.release.xcconfig */,
+				A0DC664C18073AF93EC5E33C /* Pods-NumberClash.debug.xcconfig */,
+				A35B80C5B651281252C5AD3A /* Pods-NumberClash.release.xcconfig */,
+				73FC795978C91F623D9F8547 /* Pods-NumberClash-NumberClashUITests.debug.xcconfig */,
+				CD4F6D77E78DD890C0E9A0D0 /* Pods-NumberClash-NumberClashUITests.release.xcconfig */,
+				27A8594A56A611B9820CDF81 /* Pods-NumberClashTests.debug.xcconfig */,
+				8F287A86751E7822DB728359 /* Pods-NumberClashTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -143,9 +153,9 @@
 		D6BFB9AA7BBD928A0356ADB3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3B2BCCA3B858A797AD104FEC /* Pods_Reverse2048.framework */,
-				470052F1C655F85E45215C32 /* Pods_Reverse2048_Reverse2048UITests.framework */,
-				44F1A458AD5CC494D376892A /* Pods_Reverse2048Tests.framework */,
+				F623463E82EB3C50A9D3261B /* Pods_NumberClash.framework */,
+				D8091B29BB2D0230B2BFCF8F /* Pods_NumberClash_NumberClashUITests.framework */,
+				59DB0255BB0C51FE89CE8569 /* Pods_NumberClashTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -161,7 +171,6 @@
 				575275E32D96FAAA00E80CC6 /* Sources */,
 				575275E42D96FAAA00E80CC6 /* Frameworks */,
 				575275E52D96FAAA00E80CC6 /* Resources */,
-				33B900A8893C8785A65458F7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -205,7 +214,6 @@
 				575276002D96FAAB00E80CC6 /* Sources */,
 				575276012D96FAAB00E80CC6 /* Frameworks */,
 				575276022D96FAAB00E80CC6 /* Resources */,
-				D4C7B0DBC933EFDD0937BBD7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -248,7 +256,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 				"zh-Hant",
 				"zh-Hans",
 				"zh-HK",
@@ -256,9 +263,6 @@
 			);
 			mainGroup = 575275DE2D96FAAA00E80CC6;
 			minimizedProjectReferenceProxies = 1;
-			packageReferences = (
-				575276BD2D97C28900E80CC6 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
-			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 575275E82D96FAAA00E80CC6 /* Products */;
 			projectDirPath = "";
@@ -296,23 +300,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		33B900A8893C8785A65458F7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Reverse2048/Pods-Reverse2048-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Reverse2048/Pods-Reverse2048-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Reverse2048/Pods-Reverse2048-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		94F3201E9613C9CEE7747650 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -328,7 +315,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Reverse2048-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-NumberClash-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -350,28 +337,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Reverse2048-Reverse2048UITests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-NumberClash-NumberClashUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D4C7B0DBC933EFDD0937BBD7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Reverse2048-Reverse2048UITests/Pods-Reverse2048-Reverse2048UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Reverse2048-Reverse2048UITests/Pods-Reverse2048-Reverse2048UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Reverse2048-Reverse2048UITests/Pods-Reverse2048-Reverse2048UITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E978BC7C8B6DAC8FD58D1CE8 /* [CP] Check Pods Manifest.lock */ = {
@@ -389,7 +359,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Reverse2048Tests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-NumberClashTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -554,13 +524,13 @@
 		};
 		5752760F2D96FAAB00E80CC6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 31AC3D47F5751EE252C409CF /* Pods-Reverse2048.debug.xcconfig */;
+			baseConfigurationReference = A0DC664C18073AF93EC5E33C /* Pods-NumberClash.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NumberClash/NumberClash.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"NumberClash/Preview Content\"";
 				DEVELOPMENT_TEAM = MY8WU4892D;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -582,28 +552,28 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 11.5;
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = CHIA.ProMaxHardReverse2048;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = CHIA.tetrisslide;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,7";
-				XROS_DEPLOYMENT_TARGET = 1.3;
+				TARGETED_DEVICE_FAMILY = 1;
+				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
 		575276102D96FAAB00E80CC6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B5CF5A0195469AC0BD294D66 /* Pods-Reverse2048.release.xcconfig */;
+			baseConfigurationReference = A35B80C5B651281252C5AD3A /* Pods-NumberClash.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NumberClash/NumberClash.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"NumberClash/Preview Content\"";
 				DEVELOPMENT_TEAM = MY8WU4892D;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -625,24 +595,25 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 11.5;
-				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = CHIA.ProMaxHardReverse2048;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = CHIA.tetrisslide;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,7";
-				XROS_DEPLOYMENT_TARGET = 1.3;
+				TARGETED_DEVICE_FAMILY = 1;
+				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
 		575276122D96FAAB00E80CC6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 17B7E5BFE0ABB1266168F78A /* Pods-Reverse2048Tests.debug.xcconfig */;
+			baseConfigurationReference = 27A8594A56A611B9820CDF81 /* Pods-NumberClashTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MY8WU4892D;
@@ -650,7 +621,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "CHIA.NumberClashTests\n";
+				PRODUCT_BUNDLE_IDENTIFIER = CHIA.tetrisslideTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -664,9 +635,10 @@
 		};
 		575276132D96FAAB00E80CC6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 565A5B1664C2964445FEDCBC /* Pods-Reverse2048Tests.release.xcconfig */;
+			baseConfigurationReference = 8F287A86751E7822DB728359 /* Pods-NumberClashTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MY8WU4892D;
@@ -674,7 +646,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "CHIA.NumberClashTests\n";
+				PRODUCT_BUNDLE_IDENTIFIER = CHIA.tetrisslideTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -688,8 +660,9 @@
 		};
 		575276152D96FAAB00E80CC6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 91824F4F4B705D66D68F9D6A /* Pods-Reverse2048-Reverse2048UITests.debug.xcconfig */;
+			baseConfigurationReference = 73FC795978C91F623D9F8547 /* Pods-NumberClash-NumberClashUITests.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MY8WU4892D;
@@ -697,7 +670,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "CHIA.NumberClashUITests\n";
+				PRODUCT_BUNDLE_IDENTIFIER = CHIA.tetrisslideUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -711,8 +684,9 @@
 		};
 		575276162D96FAAB00E80CC6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D3492E1D07DE771C4B85C246 /* Pods-Reverse2048-Reverse2048UITests.release.xcconfig */;
+			baseConfigurationReference = CD4F6D77E78DD890C0E9A0D0 /* Pods-NumberClash-NumberClashUITests.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MY8WU4892D;
@@ -720,7 +694,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "CHIA.NumberClashUITests\n";
+				PRODUCT_BUNDLE_IDENTIFIER = CHIA.tetrisslideUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -772,25 +746,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		575276BD2D97C28900E80CC6 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 12.2.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		575276BE2D97C28900E80CC6 /* GoogleMobileAds */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 575276BD2D97C28900E80CC6 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
-			productName = GoogleMobileAds;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 575275DF2D96FAAA00E80CC6 /* Project object */;
 }
