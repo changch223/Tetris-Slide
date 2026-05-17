@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tetris Slide — Support / サポート</title>
+<meta name="description" content="Support and FAQ for Tetris Slide. Bug reports, feature requests, and answers about gameplay, the placement AI, skips, merging, and privacy.">
+<style>
+  :root{--bg:#0e1116;--card:#161b22;--fg:#e6edf3;--mut:#9aa4b2;--acc:#4da3ff;--line:#222b36}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Sans","Noto Sans JP",sans-serif;background:var(--bg);color:var(--fg);line-height:1.7}
+  .wrap{max-width:820px;margin:0 auto;padding:48px 20px 80px}
+  header{text-align:center;margin-bottom:40px}
+  h1{font-size:2rem;margin:.2em 0}
+  h2{border-bottom:1px solid var(--line);padding-bottom:.3em;margin-top:2.2em}
+  h3{margin-top:1.6em;color:var(--acc)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 24px;margin:16px 0}
+  a{color:var(--acc)}
+  .nav{text-align:center;margin:20px 0;font-size:.95rem}
+  .nav a{margin:0 10px}
+  footer{text-align:center;color:var(--mut);font-size:.85rem;margin-top:56px;border-top:1px solid var(--line);padding-top:24px}
+  .lang{color:var(--mut);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;margin-top:2.2em}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>Tetris Slide — Support</h1>
+  <p>Need help? You're in the right place. / お困りですか？ここで解決します。</p>
+</header>
+
+<nav class="nav">
+  <a href="index.html">Home</a> ·
+  <a href="support.html">Support</a> ·
+  <a href="privacy.html">Privacy</a> ·
+  <a href="https://github.com/changch223/reverse2048">GitHub</a>
+</nav>
+
+<h2>Contact / お問い合わせ</h2>
+<div class="card">
+<ul>
+  <li><strong>Bug reports / 不具合報告</strong> —
+    <a href="https://github.com/changch223/reverse2048/issues/new">Open a GitHub issue</a></li>
+  <li><strong>Feature requests / 機能リクエスト</strong> — same place, tag with <code>enhancement</code></li>
+  <li><strong>Email</strong> — chang.ch23@gmail.com</li>
+</ul>
+<p>We aim to respond within 5 business days.<br>
+原則5営業日以内にご返信します。</p>
+</div>
+
+<p class="lang">FAQ — English</p>
+
+<h3>How do I rotate a piece?</h3>
+<p>Tap the circular rotate button next to the NEXT preview. The piece rotates
+90° clockwise. Rotation supports a wall-kick: if it doesn't fit at the current
+spot, the game shifts it slightly to make it fit. The long I-piece always
+rotates as long as there is room somewhere on the board.</p>
+
+<h3>What happens if my swipe doesn't move anything?</h3>
+<p>That is a valid move. A swipe that doesn't disturb the board lets the next
+piece land exactly on its ghost spot — use it deliberately to place safely.</p>
+
+<h3>Why was a piece skipped (red ✕)?</h3>
+<p>The ghost shows where the next piece will land. If your swipe slides blocks
+onto that exact spot, the piece can no longer be placed there: it is discarded,
+a brand-new piece starts the next turn, and a red ✕ blinks on the lost spot.
+<strong>Five skips in a row ends the game</strong> — watch the skip gauge.</p>
+
+<h3>Why does the next piece always land in a bad place?</h3>
+<p>By design. Tetris Slide uses an adversarial placement AI: it reads your best
+possible response and drops the next piece on the spot that hurts you most.
+This is a pure-skill game, not a random one. Read the board and rebuild.</p>
+
+<h3>Why did two blocks join together?</h3>
+<p>After a swipe, same-color blocks that end up touching merge into one rigid
+shape and move together from then on. Different colors never merge. A line
+clear that cuts a merged shape splits the disconnected parts again.</p>
+
+<h3>Which lines clear — rows or columns?</h3>
+<p>Both. Any fully filled horizontal row or vertical column clears. Mixed
+simultaneous clears score big.</p>
+
+<h3>Does the game show ads?</h3>
+<p>No ad banners or interstitials are displayed during play, and there are no
+in-app purchases. (The app still bundles and initializes the Google Mobile Ads
+SDK carried over from an earlier version, so an App Tracking Transparency
+prompt — and, in the EU, a consent form — may still appear at launch. See the
+<a href="privacy.html">Privacy Policy</a> for details.)</p>
+
+<h3>How is my high score saved?</h3>
+<p>Locally on your device only. No cloud sync, no Game Center, no account, and
+your score and settings are never uploaded.</p>
+
+<h3>Sound or haptics not working?</h3>
+<p>Open <strong>Settings</strong> from the main menu and check the Sound and
+Haptics toggles. Also confirm your device isn't muted and Settings →
+Sounds &amp; Haptics → System Haptics is on.</p>
+
+<p class="lang">FAQ — 日本語</p>
+
+<h3>ピースの回転方法は？</h3>
+<p>NEXT表示の隣にある丸い回転ボタンをタップすると90°時計回りに回転します。
+ウォールキック対応で、その場で入らない場合は少しずらして収めます。長い I
+ピースは盤面に空きがあれば必ず回転します。</p>
+
+<h3>スワイプしても何も動かない時は？</h3>
+<p>それも有効な手です。盤面を動かさないスワイプは、次のピースをゴースト位置に
+そのまま配置できます。安全に置きたい時に意図的に使えます。</p>
+
+<h3>ピースがスキップされた（赤✕）のはなぜ？</h3>
+<p>ゴーストは次のピースの出現位置を示します。スワイプでその場所にブロックが
+滑り込むと配置できなくなり、そのピースは破棄、新しいピースで次のターンを開始し、
+失われた位置に赤い✕が点滅します。<strong>連続5回スキップで敗北</strong>です。
+スキップゲージに注意してください。</p>
+
+<h3>次のピースがいつも不利な場所に出るのはなぜ？</h3>
+<p>仕様です。本作はあなたの最善応手を読み切り、一番不利になる場所に次のピースを
+置く「敗者配置AI」を採用しています。運ゲーではなく純粋な実力勝負です。盤面を
+読んで立て直してください。</p>
+
+<h3>ブロックがくっついたのはなぜ？</h3>
+<p>スワイプ後に同じ色のブロックが隣接すると1つの剛体に合体し、以降は形を保った
+まま一緒に動きます。異なる色は合体しません。ライン消去で合体形が分断されると、
+離れた部分は再び別々に戻ります。</p>
+
+<h3>消えるのは行？列？</h3>
+<p>両方です。横一列・縦一列のどちらでも、完全に埋まれば消えます。混在同時消しで
+高得点を狙えます。</p>
+
+<h3>広告は表示されますか？</h3>
+<p>プレイ中にバナー広告やインタースティシャル広告は表示されず、アプリ内課金も
+ありません。（以前のバージョンから引き継いだ Google Mobile Ads SDK を同梱・
+初期化しているため、起動時に ATT（トラッキング許可）プロンプト、EU では同意
+フォームが表示される場合があります。詳細は<a href="privacy.html">プライバシー
+ポリシー</a>をご覧ください。）</p>
+
+<h3>ハイスコアの保存先は？</h3>
+<p>端末内のみです。クラウド同期・Game Center・アカウントはなく、スコアと設定が
+サーバーに送信されることはありません。</p>
+
+<h3>音やハプティクスが動かない時は？</h3>
+<p>メインメニューの<strong>設定</strong>で「サウンド」「ハプティクス」のスイッチを
+確認してください。端末がミュートでないか、設定 → サウンドと触覚 →
+システムハプティクスがオンかもご確認ください。</p>
+
+<footer>
+  © 2026 Tetris Slide. Independently designed and developed.<br>
+  <a href="index.html">Home</a> · <a href="privacy.html">Privacy Policy</a>
+</footer>
+</div>
+</body>
+</html>
