@@ -22,7 +22,7 @@ extension Board {
 
     /// Column heights / holes / bumpiness proxy. There is no gravity and
     /// slides go four ways, so this is an approximation of "how full and
-    /// messy" the board is, not literal Tetris stack geometry.
+    /// messy" the board is, not literal falling-block stack geometry.
     func badnessMetrics() -> BadnessMetrics {
         var heights = [Int](repeating: 0, count: Board.width)
         var holes = 0

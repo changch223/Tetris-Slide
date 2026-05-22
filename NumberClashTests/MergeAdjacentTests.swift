@@ -32,13 +32,25 @@ final class MergeAdjacentTests: XCTestCase {
         }
     }
 
-    func testDifferentKindsDoNotMerge() {
+    /// Merge is by color (Block Slide has 2 colors). I and O share
+    /// PiecePrimary, T shares PieceSecondary — only different-color
+    /// neighbours stay separate.
+    func testDifferentColorsDoNotMerge() {
         var cells = emptyCells()
-        cells[9][0] = .filled(kind: .I, groupID: 1)
-        cells[9][1] = .filled(kind: .O, groupID: 2)
+        cells[9][0] = .filled(kind: .I, groupID: 1) // PiecePrimary
+        cells[9][1] = .filled(kind: .T, groupID: 2) // PieceSecondary
         let merged = Board(cells: cells).mergingAdjacentSameKind()
         XCTAssertEqual(groupID(of: merged, 9, 0), 1)
         XCTAssertEqual(groupID(of: merged, 9, 1), 2)
+    }
+
+    /// Sanity: different kinds with the SAME color DO merge.
+    func testSameColorDifferentKindsMerge() {
+        var cells = emptyCells()
+        cells[9][0] = .filled(kind: .I, groupID: 5)
+        cells[9][1] = .filled(kind: .O, groupID: 9) // both PiecePrimary
+        let merged = Board(cells: cells).mergingAdjacentSameKind()
+        XCTAssertEqual(groupID(of: merged, 9, 0), groupID(of: merged, 9, 1))
     }
 
     func testDiagonalContactDoesNotMerge() {

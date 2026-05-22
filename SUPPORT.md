@@ -1,6 +1,6 @@
-# Tetris Slide — Support
+# Block Slide — Support
 
-Need help with **Tetris Slide**? You're in the right place.
+Need help with **Block Slide**? You're in the right place.
 
 ## Contact / お問い合わせ
 

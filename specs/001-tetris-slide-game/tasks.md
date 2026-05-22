@@ -1,9 +1,9 @@
 ---
 
-description: "Task list for Tetris Slide Game (10x10) — 完全リビルド"
+description: "Task list for Block Slide Game (10x10) — 完全リビルド"
 ---
 
-# Tasks: Tetris Slide Game (10x10) — 完全リビルド
+# Tasks: Block Slide Game (10x10) — 完全リビルド
 
 **Input**: Design documents from `/Users/changchiawei/Desktop/reverse2048/specs/001-tetris-slide-game/`
 **Prerequisites**: plan.md, spec.md, research.md, data-model.md, contracts/, quickstart.md
@@ -38,7 +38,7 @@ description: "Task list for Tetris Slide Game (10x10) — 完全リビルド"
 
 - [X] T001 既存の不要ファイルを削除する: `NumberClash/Classic View.swift`、`NumberClash/ProMax View.swift`、`NumberClash/ReverseView.swift`、`NumberClash/Item.swift`、`NumberClash/AppOpenAdManager.swift`（FR-039、Phase 3 以降の作業はこれら無しで成立）
 - [ ] T002 新しいソースディレクトリを作り、Xcode プロジェクトのグループ参照を追加する: `NumberClash/Game/`、`NumberClash/Views/`、`NumberClash/Services/` を `NumberClash.xcodeproj/project.pbxproj` の Reverse2048 ターゲットに登録
-- [X] T003 [P] 7 種類のピース色アセットを `NumberClash/Assets.xcassets/` に追加: `PieceI.colorset`、`PieceO.colorset`、`PieceT.colorset`、`PieceS.colorset`、`PieceZ.colorset`、`PieceJ.colorset`、`PieceL.colorset`（標準テトリス配色、light/dark 双方で WCAG コントラスト基準を満たす）
+- [X] T003 [P] 7 種類のピース色アセットを `NumberClash/Assets.xcassets/` に追加: `PieceI.colorset`、`PieceO.colorset`、`PieceT.colorset`、`PieceS.colorset`、`PieceZ.colorset`、`PieceJ.colorset`、`PieceL.colorset`（標準ブロック配色、light/dark 双方で WCAG コントラスト基準を満たす）
 - [ ] T004 [P] `Podfile` の target 名（`Reverse2048`）を確認し、リポジトリルートで `pod install` を実行して `Pods/` を最新化（`Google-Mobile-Ads-SDK` がクリーンビルドできること）
 
 ---
@@ -59,7 +59,7 @@ description: "Task list for Tetris Slide Game (10x10) — 完全リビルド"
 
 ## Phase 3: User Story 1 — コアゲームプレイ (Priority: P1) 🎯 MVP
 
-**Goal**: プレイヤーが 10×10 盤面でテトリスピースを 2048 風にスワイプして
+**Goal**: プレイヤーが 10×10 盤面でブロックピースを 2048 風にスワイプして
 動かし、横一行を揃えて消し、ピースが置けなくなるまでスコアを稼げる。
 これが MVP の核心。
 
@@ -130,11 +130,11 @@ description: "Task list for Tetris Slide Game (10x10) — 完全リビルド"
 
 ## Phase 5: User Story 3 — 効果音とハプティクス (Priority: P3)
 
-**Goal**: 4 イベント（スワイプ・通常行消去・テトリス・ゲームオーバー）で
+**Goal**: 4 イベント（スワイプ・通常行消去・ブロック・ゲームオーバー）で
 効果音と段階的ハプティクスを再生。Settings 画面で音/振動を独立にトグル可能。
 
 **Independent Test**: Settings で両方 ON → 1 ゲーム遊んでスワイプ・通常消し・
-テトリス・ゲームオーバーで違う音と振動が鳴る → 両方 OFF → 同じ操作で無音・
+ブロック・ゲームオーバーで違う音と振動が鳴る → 両方 OFF → 同じ操作で無音・
 無振動になることを実機で確認。
 
 ### Tests for User Story 3 ⚠️
@@ -147,7 +147,7 @@ description: "Task list for Tetris Slide Game (10x10) — 完全リビルド"
 - [X] T040 [US3] `NumberClash/Services/SoundPlayer.swift`: `enum GameSound { case swipe, lineClear, tetris, gameOver }` と `protocol SoundPlayer { func play(_ sound: GameSound) }` + `final class AVAudioSoundPlayer: SoundPlayer`。起動時に 4 個の `AVAudioPlayer` を `prepareToPlay()` 済みで保持、`play` で `currentTime = 0` リセットして再生。`SettingsStore.load().soundEnabled` が false なら early return（research R-5、依存: T039）
 - [X] T041 [US3] `NumberClash/Services/HapticsPlayer.swift`: `enum GameHaptic { case swipeLight, lineClearMedium, tetrisStrong, gameOverError }` と `protocol HapticsPlayer { func play(_ haptic: GameHaptic) }` + `final class UIFeedbackHapticsPlayer: HapticsPlayer`。research R-6 のマッピング（`UIImpactFeedbackGenerator(.light/.medium)`、`UINotificationFeedbackGenerator.success/.error`）。`SettingsStore.load().hapticsEnabled` が false なら early return（依存: T039）
 - [X] T042 [P] [US3] 既存の `NumberClash/Sound/` ディレクトリの中身を全削除し、新規録り下ろしの `swipe.wav`、`clear.wav`、`tetris.wav`、`gameover.wav`（各 < 1 秒、44.1kHz）を配置。Xcode の Reverse2048 ターゲットの Copy Bundle Resources にこれら 4 ファイルを登録
-- [X] T043 [US3] `NumberClash/Game/GameEngine.swift` の修正: イニシャライザに `SoundPlayer` と `HapticsPlayer` を注入できるようにし、`handleSwipe` の各イベントポイント（有効スワイプ完了、行消去、テトリス、ゲームオーバー）で対応する `play(_:)` を呼ぶ（依存: T024、T040、T041）
+- [X] T043 [US3] `NumberClash/Game/GameEngine.swift` の修正: イニシャライザに `SoundPlayer` と `HapticsPlayer` を注入できるようにし、`handleSwipe` の各イベントポイント（有効スワイプ完了、行消去、ブロック、ゲームオーバー）で対応する `play(_:)` を呼ぶ（依存: T024、T040、T041）
 - [X] T044 [US3] `NumberClash/Views/SettingsView.swift`: `struct SettingsView: View` に効果音 `Toggle` とハプティクス `Toggle` の 2 行。値変更時に `SettingsStore.save(...)` を即時実行（依存: T039）
 - [X] T045 [US3] `NumberClash/Views/MainMenuView.swift` の修正: SETTINGS ボタン（`NavigationLink`）を追加して `SettingsView` を開けるようにする（依存: T044、T032）
 
@@ -207,7 +207,7 @@ ATT の順で同意取得し、その後で AdMob を初期化。プレイは追
 
 **Purpose**: アイコン差し替え、About 文言更新、リリース前総合検証
 
-- [X] T059 [P] `NumberClash/Assets.xcassets/AppIcon.appiconset/` の中身を新しいテトリス風アイコン（必要全サイズ）に差し替え、`Contents.json` を更新
+- [X] T059 [P] `NumberClash/Assets.xcassets/AppIcon.appiconset/` の中身を新しいブロック風アイコン（必要全サイズ）に差し替え、`Contents.json` を更新
 - [X] T060 [P] `ICON/` ディレクトリの中身を、新ロゴのソース（PNG/SVG/PSD 等のデザインソース）に差し替え。リポジトリには version-controlled な PNG のみ含める
 - [X] T061 既存の `NumberClash/AboutView.swift` を `NumberClash/Views/AboutView.swift` に移動し、文言を新ゲーム用に書き換え。クレジット・バージョン表記も最新化（依存: T051 と同じローカライズキーを使用）
 - [ ] T062 quickstart.md §4 の「1 セッション通しプレイ」スモークパスを実機 1 台で実施し、結果を PR の Test Plan セクションに記録（憲法 V の必須リリースゲート）

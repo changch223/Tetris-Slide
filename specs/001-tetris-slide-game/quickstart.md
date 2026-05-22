@@ -1,4 +1,4 @@
-# Quickstart: Tetris Slide Game (10x10)
+# Quickstart: Block Slide Game (10x10)
 
 **Feature**: 001-tetris-slide-game
 **Date**: 2026-05-08
@@ -69,7 +69,7 @@ open NumberClash.xcworkspace
       方向に滑る（2048 風挙動、合体は起きない）
 - [ ] スワイプ後にピースが新しい場所にランダム回転で出現
 - [ ] 横 1 行を埋めて消去 → スコア +100 + 設置ボーナス +1 を確認
-- [ ] 4 行同時消し（テトリス）が起きた瞬間、専用効果音とハプティクス
+- [ ] 4行同時消しが起きた瞬間、専用効果音とハプティクス
       （`UINotificationFeedbackGenerator.success`）が発火
 - [ ] 無効スワイプ（盤面が動かない方向）でターン消費されないことを確認
 - [ ] 意図的に盤面を埋めて、次のピースが入らない状態にしてゲームオーバー

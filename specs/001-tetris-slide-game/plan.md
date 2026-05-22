@@ -1,4 +1,4 @@
-# Implementation Plan: Tetris Slide Game (10x10) — 完全リビルド
+# Implementation Plan: Block Slide Game (10x10) — 完全リビルド
 
 **Branch**: `001-tetris-slide-game` | **Date**: 2026-05-08 | **Spec**: [spec.md](./spec.md)
 **Input**: Feature specification from `/specs/001-tetris-slide-game/spec.md`
@@ -6,7 +6,7 @@
 ## Summary
 
 既存 2048 系コード（Classic/ProMax/Reverse の 3 モード、SwiftData の Item モデル、
-AppOpen 広告まわり）をすべて削除し、SwiftUI ネイティブの 10×10「テトリス×2048」
+AppOpen 広告まわり）をすべて削除し、SwiftUI ネイティブの 10×10「ブロック×2048」
 ゲームに完全リビルドする。
 
 技術アプローチの要点：
@@ -169,7 +169,7 @@ NumberClash/AppOpenAdManager.swift # AppOpen 広告は廃止（FR-035）
    `.onSwipe`）と、無効スワイプを取り消す方法
 2. 100 セル同時アニメーションを 60 fps で回すための SwiftUI 戦術
    （`.animation` の効率、`Canvas` 採用判断、`@Observable` のリビルド粒度）
-3. テトリスピース 7 種の形状定義と、4 回転 + 全位置の配置候補列挙アルゴリ
+3. ブロックピース 7 種の形状定義と、4 回転 + 全位置の配置候補列挙アルゴリ
    ズム（10×10 で実用的に <10ms 完了する設計）
 4. AdMob UMP（User Messaging Platform）の SwiftUI からの利用パターンと
    ATT との順序問題

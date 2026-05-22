@@ -9,17 +9,20 @@ final class PieceRotationTests: XCTestCase {
         return Board(cells: cells)
     }
 
-    /// The pre-kick code refused this rotation: a horizontal I at the same
-    /// origin collides with the blocker, and the only fit is one row down.
+    /// The pre-kick code refused this rotation: I (3-cell bar) at origin
+    /// (0,0) would occupy cols 0..2; if cols 0..2 are blocked at row 0 the
+    /// bar can't fit there and must kick to the next free row.
     func testRotationKicksAroundAnObstacle() {
-        let board = filledBoard([GridPosition(row: 0, col: 3)])
+        let board = filledBoard([
+            GridPosition(row: 0, col: 1) // blocks the middle cell of the horiz bar
+        ])
         let resolved = PieceRotation.resolve(
             on: board, kind: .I, to: .deg0,
             origin: GridPosition(row: 0, col: 0), removingGroup: nil
         )
         XCTAssertNotNil(resolved)
         XCTAssertEqual(resolved?.rotation, .deg0)
-        // (0,0) blocked by (0,3); kick walks to the first free origin: (1,0).
+        // (0,0) blocked by middle cell; kick walks to first free origin (1,0).
         XCTAssertEqual(resolved?.origin, GridPosition(row: 1, col: 0))
     }
 

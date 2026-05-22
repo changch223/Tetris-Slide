@@ -13,13 +13,14 @@ final class BoardTests: XCTestCase {
     }
 
     func testPlacingPieceMakesCellsFilled() {
+        // O is the 3-cell corner: (0,0), (0,1), (1,0).
         let b = Board()
             .placed(PieceKind.O.shape(for: .deg0), kind: .O,
                     at: GridPosition(row: 0, col: 0), groupID: 1)
         XCTAssertFalse(b.isEmpty(at: GridPosition(row: 0, col: 0)))
         XCTAssertFalse(b.isEmpty(at: GridPosition(row: 0, col: 1)))
         XCTAssertFalse(b.isEmpty(at: GridPosition(row: 1, col: 0)))
-        XCTAssertFalse(b.isEmpty(at: GridPosition(row: 1, col: 1)))
+        XCTAssertTrue(b.isEmpty(at: GridPosition(row: 1, col: 1)))
         XCTAssertTrue(b.isEmpty(at: GridPosition(row: 2, col: 2)))
     }
 

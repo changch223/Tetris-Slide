@@ -1,13 +1,13 @@
-# Privacy Policy — Tetris Slide
+# Privacy Policy — Block Slide
 
 **Last updated / 最終更新日**: 2026-05-09
 **Effective date / 発効日**: 2026-05-09
 
-This Privacy Policy describes how the **Tetris Slide** mobile app
+This Privacy Policy describes how the **Block Slide** mobile app
 ("the app", "we", "our") handles information when you use it on your iPhone
 or iPad.
 
-本プライバシーポリシーは、モバイルアプリ「Tetris Slide」（以下「本アプリ」）
+本プライバシーポリシーは、モバイルアプリ「Block Slide」（以下「本アプリ」）
 が iPhone / iPad 上でユーザーの情報をどのように取り扱うかを説明するもの
 です。
 

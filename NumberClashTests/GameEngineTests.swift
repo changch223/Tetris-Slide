@@ -24,9 +24,11 @@ final class GameEngineTests: XCTestCase {
     func testFirstPieceIsPlacedSomewhereOnBoard() {
         let e = makeEngine()
         e.startNewGame()
-        // Spawn is now random (2048 rule); any 4 cells should be filled.
+        // Block Slide pieces are non-tetrominoes: 3 cells (I/O) or 5 cells.
         let filled = e.board.cells.flatMap { $0 }.filter { $0.isFilled }
-        XCTAssertEqual(filled.count, 4)
+        XCTAssertTrue(filled.count == 3 || filled.count == 5,
+                      "spawn must be 3 or 5 cells, got \(filled.count)")
+        XCTAssertNotEqual(filled.count, 4, "tetromino-free invariant")
     }
 
     func testPlannedNextSpawnIsSetAfterStart() {

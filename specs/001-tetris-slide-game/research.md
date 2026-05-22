@@ -1,4 +1,4 @@
-# Phase 0 Research: Tetris Slide Game (10x10)
+# Phase 0 Research: Block Slide Game (10x10)
 
 **Feature**: 001-tetris-slide-game
 **Date**: 2026-05-08
@@ -134,7 +134,7 @@ return candidates.randomElement()  // None なら GameOver
 **Rationale**:
 - ゲームの効果音は短く（< 1 秒）、4 種類だけ。事前ロード費用は無視できる。
 - `AVAudioPlayer` を都度 `init` するとオーディオセッションのウォームアップで
-  数 10 ms の遅延が出ることがあり、SC-009（テトリス時 100% 発火）に影響。
+  数 10 ms の遅延が出ることがあり、SC-009（4列同時消し時 100% 発火）に影響。
 - `AVAudioSession.sharedInstance().setCategory(.ambient)` を起動時に 1 回
   設定すれば、サイレントモード尊重 + BGM ミキシング不可（=ゲームに音楽は
   ない）の最低限ポリシーを満たせる。

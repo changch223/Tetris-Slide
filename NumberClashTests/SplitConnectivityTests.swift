@@ -89,6 +89,7 @@ final class SplitConnectivityTests: XCTestCase {
     }
 
     func testCellsOfPlacementReturnsCorrectPositions() {
+        // O is the 3-cell corner: (0,0), (0,1), (1,0) relative to origin.
         let b = Board()
         let placement = PiecePlacement(
             kind: .O, rotation: .deg0,
@@ -99,7 +100,6 @@ final class SplitConnectivityTests: XCTestCase {
             GridPosition(row: 2, col: 3),
             GridPosition(row: 2, col: 4),
             GridPosition(row: 3, col: 3),
-            GridPosition(row: 3, col: 4),
         ]))
     }
 }

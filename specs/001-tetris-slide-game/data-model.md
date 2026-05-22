@@ -1,4 +1,4 @@
-# Phase 1 Data Model: Tetris Slide Game (10x10)
+# Phase 1 Data Model: Block Slide Game (10x10)
 
 **Feature**: 001-tetris-slide-game
 **Date**: 2026-05-08
@@ -211,7 +211,7 @@ enum ScoreCalculator {
         case 1: return 100
         case 2: return 300
         case 3: return 500
-        case 4: return 800   // テトリス
+        case 4: return 800   // ブロック
         default: return 800  // 理論上 5+ は起こり得ないが安全側
         }
     }

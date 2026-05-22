@@ -23,23 +23,34 @@ final class PiecePlacementTests: XCTestCase {
         }
     }
 
-    func testEachShapeHasFourCells() {
+    /// Block Slide uses non-tetromino polyominoes: 3 cells (I, O) or 5
+    /// cells (T, S, Z, J, L). 4-cell shapes are deliberately avoided.
+    func testEachShapeHasExpectedCellCount() {
+        let expected: [PieceKind: Int] = [
+            .I: 3, .O: 3,
+            .T: 5, .S: 5, .Z: 5, .J: 5, .L: 5,
+        ]
         for k in PieceKind.allCases {
             for r in Rotation.allCases {
-                XCTAssertEqual(k.shape(for: r).cells.count, 4,
-                               "\(k) at \(r) should have 4 cells")
+                XCTAssertEqual(k.shape(for: r).cells.count, expected[k]!,
+                               "\(k) at \(r) should have \(expected[k]!) cells")
+                XCTAssertNotEqual(k.shape(for: r).cells.count, 4,
+                                  "no kind may have 4 cells (tetromino-free design)")
             }
         }
     }
 
-    func testOPieceHasOneUniqueRotation() {
-        XCTAssertEqual(PieceKind.O.uniqueShapes().count, 1)
-    }
-
+    /// I is the 3-cell bar — horizontal and vertical only.
     func testIPieceHasTwoUniqueRotations() {
         XCTAssertEqual(PieceKind.I.uniqueShapes().count, 2)
     }
 
+    /// O is the 3-cell corner — all four rotations are distinct.
+    func testOPieceHasFourUniqueRotations() {
+        XCTAssertEqual(PieceKind.O.uniqueShapes().count, 4)
+    }
+
+    /// T pentomino: T pointing in each of the 4 directions → 4 unique.
     func testTPieceHasFourUniqueRotations() {
         XCTAssertEqual(PieceKind.T.uniqueShapes().count, 4)
     }

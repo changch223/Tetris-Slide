@@ -1,4 +1,4 @@
-# Specification Quality Checklist: Tetris Slide Game (10x10) — 完全リビルド
+# Specification Quality Checklist: Block Slide Game (10x10) — 完全リビルド
 
 **Purpose**: Validate specification completeness and quality before proceeding to planning
 **Created**: 2026-05-08

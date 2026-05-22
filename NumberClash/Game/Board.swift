@@ -140,12 +140,12 @@ struct Board: Equatable {
         return out
     }
 
-    /// Unifies every 4-connected region of **same-kind** filled cells into a
-    /// single group, so that once two blocks of the same colour touch they
-    /// move together as one rigid shape from then on. Each region reuses the
-    /// smallest original `groupID` it contains (stable — no ID growth, and a
-    /// lone piece keeps its own ID). Different colours never merge even when
-    /// adjacent; diagonal-only contact does not merge (4-connectivity).
+    /// Unifies every 4-connected region of **same-color** filled cells into a
+    /// single group, so that once two blocks of the same on-screen colour
+    /// touch they move together as one rigid shape. With the 2-color Block
+    /// Slide palette this means "same colour merges" — exactly what the
+    /// player sees. Cells keep their original `kind` (for shape rendering);
+    /// only `groupID` is unified to the smallest original id in the region.
     func mergingAdjacentSameKind() -> Board {
         var newCells = cells
         var visited = Array(
@@ -158,6 +158,7 @@ struct Board: Equatable {
             for c in 0..<Board.width {
                 guard !visited[r][c],
                       case .filled(let kind, _) = cells[r][c] else { continue }
+                let color = kind.colorAssetName
 
                 var component: [GridPosition] = []
                 var minID = Int.max
@@ -165,7 +166,7 @@ struct Board: Equatable {
                 while let p = stack.popLast() {
                     if visited[p.row][p.col] { continue }
                     guard case .filled(let k, let id) = cells[p.row][p.col],
-                          k == kind else { continue }
+                          k.colorAssetName == color else { continue }
                     visited[p.row][p.col] = true
                     component.append(p)
                     minID = min(minID, id)
@@ -175,12 +176,14 @@ struct Board: Equatable {
                               nc >= 0, nc < Board.width,
                               !visited[nr][nc],
                               case .filled(let k2, _) = cells[nr][nc],
-                              k2 == kind else { continue }
+                              k2.colorAssetName == color else { continue }
                         stack.append(GridPosition(row: nr, col: nc))
                     }
                 }
                 for p in component {
-                    newCells[p.row][p.col] = .filled(kind: kind, groupID: minID)
+                    if case .filled(let k0, _) = newCells[p.row][p.col] {
+                        newCells[p.row][p.col] = .filled(kind: k0, groupID: minID)
+                    }
                 }
             }
         }

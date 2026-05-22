@@ -45,8 +45,9 @@ final class RotationTests: XCTestCase {
         }
         XCTAssertEqual(after.groupID, before.groupID)
         let groupCells = e.board.groups()[after.groupID] ?? []
-        XCTAssertEqual(groupCells.count, 4,
-                       "the rotated piece must still occupy exactly 4 cells")
+        // Block Slide pieces are 3-cell (I/O) or 5-cell (T/S/Z/J/L) — never 4.
+        XCTAssertTrue(groupCells.count == 3 || groupCells.count == 5,
+                      "rotated piece cell count must be 3 or 5, got \(groupCells.count)")
     }
 
     /// A swipe either places the ghosted piece (fresh current piece) or, if
@@ -66,7 +67,9 @@ final class RotationTests: XCTestCase {
             XCTAssertLessThanOrEqual(e.consecutiveSkips, GameEngine.maxConsecutiveSkips)
             if let cur = e.currentPiece {
                 XCTAssertNotEqual(cur.groupID, firstGroupID)
-                XCTAssertEqual(e.board.groups()[cur.groupID]?.count, 4)
+                let n = e.board.groups()[cur.groupID]?.count ?? 0
+                XCTAssertTrue(n == 3 || n == 5,
+                              "piece cell count must be 3 or 5, got \(n)")
             } else {
                 // No current piece ⇒ the turn was skipped.
                 XCTAssertGreaterThan(e.consecutiveSkips, 0)

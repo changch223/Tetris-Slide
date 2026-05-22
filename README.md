@@ -1,16 +1,16 @@
-# Tetris Slide
+# Block Slide
 
-> Tetris meets 2048 — a 10×10 puzzle where one swipe slides every block at once,
+> 2048 meets a 10×10 block puzzle — a 10×10 puzzle where one swipe slides every block at once,
 > and full rows AND columns clear.
 >
-> テトリスと 2048 の融合 — 10×10 盤面で 1 回のスワイプで全ブロックが滑り、
+> 2048 のスライドと10×10ブロックパズルの融合 — 10×10 盤面で 1 回のスワイプで全ブロックが滑り、
 > 横一列も縦一列も揃うと消える。
 
 ---
 
 ## How to play / 遊び方
 
-1. **PLAY** — A Tetris piece (I/O/T/S/Z/J/L) appears on the 10×10 board.
+1. **PLAY** — A block piece of varied shapes appears on the 10×10 board.
 2. **Rotate** — Tap the rotate button to turn the just-spawned piece 90° clockwise.
 3. **Swipe** — Up / Down / Left / Right. Every piece on the board slides as
    one rigid unit in that direction until it hits another piece or the wall.
@@ -22,7 +22,7 @@
 
 ---
 
-1. **PLAY** をタップすると、テトリスのピース (I/O/T/S/Z/J/L) が 10×10 盤面に出現します。
+1. **PLAY** をタップすると、さまざまな形のブロックピース が 10×10 盤面に出現します。
 2. **回転ボタン**で出現したばかりのピースを 90° 時計回りに回転できます。
 3. **スワイプ** — 上下左右いずれかの方向。盤面上のすべてのピースがその方向に
    剛体ごと滑り、他のピースか壁に当たって止まります。

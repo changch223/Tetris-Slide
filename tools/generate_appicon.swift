@@ -20,7 +20,7 @@ import Foundation
 
 let SIZE = 1024
 
-// MARK: - Tetris piece layout shared by all variants
+// MARK: - block piece layout shared by all variants
 
 struct PiecePlan {
     let cells: [(row: Int, col: Int)]

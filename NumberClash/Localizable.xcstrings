@@ -1,859 +1,857 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "%lld" : {
-
-    },
-    "BOARD_A11Y_LABEL" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Game board, 10 by 10. Swipe in any direction to slide all blocks."
+  "sourceLanguage": "en",
+  "strings": {
+    "%lld": {},
+    "BOARD_A11Y_LABEL": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Game board, 10 by 10. Swipe in any direction to slide all blocks."
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ゲーム盤、10×10。任意の方向にスワイプすると全ブロックが滑ります。"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ゲーム盤、10×10。任意の方向にスワイプすると全ブロックが滑ります。"
           }
         },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "游戏棋盘,10 × 10。向任意方向滑动可移动全部方块。"
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "游戏棋盘,10 × 10。向任意方向滑动可移动全部方块。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "遊戲棋盤,10 × 10。向任意方向滑動可移動全部方塊。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "遊戲棋盤,10 × 10。向任意方向滑動可移動全部方塊。"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "遊戲棋盤,10 × 10。向任意方向滑動可移動全部方塊。"
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "遊戲棋盤,10 × 10。向任意方向滑動可移動全部方塊。"
           }
         }
       }
     },
-    "KEY_A11Y_SWIPE_DOWN" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Swipe Down"
+    "KEY_A11Y_SWIPE_DOWN": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Swipe Down"
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "下にスワイプ"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下にスワイプ"
           }
         },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "向下滑动"
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "向下滑动"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "向下滑動"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "向下滑動"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "向下滑動"
-          }
-        }
-      }
-    },
-    "KEY_A11Y_SWIPE_LEFT" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Swipe Left"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "左にスワイプ"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "向左滑动"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "向左滑動"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "向左滑動"
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "向下滑動"
           }
         }
       }
     },
-    "KEY_A11Y_SWIPE_RIGHT" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Swipe Right"
+    "KEY_A11Y_SWIPE_LEFT": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Swipe Left"
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "右にスワイプ"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "左にスワイプ"
           }
         },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "向右滑动"
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "向左滑动"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "向右滑動"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "向左滑動"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "向右滑動"
-          }
-        }
-      }
-    },
-    "KEY_A11Y_SWIPE_UP" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Swipe Up"
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "上にスワイプ"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "向上滑动"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "向上滑動"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "向上滑動"
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "向左滑動"
           }
         }
       }
     },
-    "KEY_ABOUT" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "About"
+    "KEY_A11Y_SWIPE_RIGHT": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Swipe Right"
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "アプリについて"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "右にスワイプ"
           }
         },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "关于"
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "向右滑动"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "關於"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "向右滑動"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "關於"
-          }
-        }
-      }
-    },
-    "KEY_ABOUT_BODY_1" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A 10x10 puzzle that fuses 2048's slide mechanic with Tetris pieces. Swipe to slide every cell on the board, and clear horizontal rows to score."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "2048 のスライド操作とテトリスのピースを融合した 10×10 のパズル。スワイプすると盤面のすべてのマスが滑り、横一列をそろえると消えてスコアになります。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "10x10 棋盘上将 2048 的滑动玩法与俄罗斯方块融合的解谜游戏。滑动一次,所有方块都会滑到尽头;横向整行被填满即可消除得分。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "10x10 棋盤上把 2048 的滑動操作與俄羅斯方塊融合的解謎遊戲。滑動一次,所有方塊都會滑到盡頭,橫向整列被填滿即可消除得分。"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "10x10 棋盤上把 2048 的滑動操作與俄羅斯方塊融合的解謎遊戲。滑動一次,所有方塊都會滑到盡頭,橫向整列被填滿即可消除得分。"
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "向右滑動"
           }
         }
       }
     },
-    "KEY_ABOUT_BODY_2" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pieces appear automatically in random empty cells. The game ends when no piece can fit anymore."
+    "KEY_A11Y_SWIPE_UP": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Swipe Up"
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ピースは盤面の空いたマスに自動で出現します。どこにも置けなくなるとゲーム終了です。"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "上にスワイプ"
           }
         },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "方块会自动落在棋盘上随机的空位。当下一个方块在所有旋转下都无法放入时,游戏结束。"
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "向上滑动"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "方塊會自動落在棋盤上隨機的空位。當下一個方塊在所有旋轉下都無法放入時,遊戲結束。"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "向上滑動"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "方塊會自動落在棋盤上隨機的空位。當下一個方塊在所有旋轉下都無法放入時,遊戲結束。"
-          }
-        }
-      }
-    },
-    "KEY_ABOUT_CREDITS" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "© 2026. Independently designed and developed."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "© 2026. 個人によるデザイン・開発。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "© 2026. 独立设计与开发。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "© 2026. 獨立設計與開發。"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "© 2026. 獨立設計與開發。"
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "向上滑動"
           }
         }
       }
     },
-    "KEY_ABOUT_TITLE" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tetris Slide"
+    "KEY_ABOUT": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "About"
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "テトリス・スライド"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "アプリについて"
           }
         },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "俄罗斯方块滑动"
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "关于"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "俄羅斯方塊滑動"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "關於"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "俄羅斯方塊滑動"
-          }
-        }
-      }
-    },
-    "KEY_APP_TAGLINE" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Slide blocks. Clear lines. Beat your high score."
-          }
-        },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ブロックを滑らせ、ラインを消して、ハイスコアを更新。"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "滑动方块,消除整行,挑战最高分。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "滑動方塊、消除整列、挑戰最高分。"
-          }
-        },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "滑動方塊、消除整列、挑戰最高分。"
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "關於"
           }
         }
       }
     },
-    "KEY_APP_TITLE" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tetris Slide"
+    "KEY_ABOUT_BODY_1": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A 10x10 slide-merge puzzle with block pieces of varied shapes. Swipe to slide every cell on the board, and clear horizontal rows to score."
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "テトリス・スライド"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "2048 のスライド操作とさまざまな形のブロックを融合した 10×10 のパズル。スワイプすると盤面のすべてのマスが滑り、横一列をそろえると消えてスコアになります。"
           }
         },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "俄罗斯方块滑动"
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "10x10 棋盘上将 2048 的滑动玩法与各种形状的方块融合的解谜游戏。滑动一次,所有方块都会滑到尽头;横向整行被填满即可消除得分。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "俄羅斯方塊滑動"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "10x10 棋盤上把 2048 的滑動操作與各種形狀的方塊融合的解謎遊戲。滑動一次,所有方塊都會滑到盡頭,橫向整列被填滿即可消除得分。"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "俄羅斯方塊滑動"
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "10x10 棋盤上把 2048 的滑動操作與各種形狀的方塊融合的解謎遊戲。滑動一次,所有方塊都會滑到盡頭,橫向整列被填滿即可消除得分。"
           }
         }
       }
     },
-    "KEY_GAMEOVER_TITLE" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "GAME OVER"
+    "KEY_ABOUT_BODY_2": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pieces appear automatically in random empty cells. The game ends when no piece can fit anymore."
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ゲームオーバー"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ピースは盤面の空いたマスに自動で出現します。どこにも置けなくなるとゲーム終了です。"
           }
         },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "游戏结束"
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "方块会自动落在棋盘上随机的空位。当下一个方块在所有旋转下都无法放入时,游戏结束。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "遊戲結束"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "方塊會自動落在棋盤上隨機的空位。當下一個方塊在所有旋轉下都無法放入時,遊戲結束。"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "遊戲結束"
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "方塊會自動落在棋盤上隨機的空位。當下一個方塊在所有旋轉下都無法放入時,遊戲結束。"
           }
         }
       }
     },
-    "KEY_HUD_HIGH_SCORE" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "HIGH"
+    "KEY_ABOUT_CREDITS": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "© 2026. Independently designed and developed."
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "最高"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "© 2026. 個人によるデザイン・開発。"
           }
         },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "最高"
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "© 2026. 独立设计与开发。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "最高"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "© 2026. 獨立設計與開發。"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "最高"
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "© 2026. 獨立設計與開發。"
           }
         }
       }
     },
-    "KEY_HUD_SCORE" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "SCORE"
+    "KEY_ABOUT_TITLE": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Block Slide"
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "スコア"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ブロックスライド"
           }
         },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "得分"
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "方块滑动"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "分數"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "方塊滑動"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "分數"
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "方塊滑動"
           }
         }
       }
     },
-    "KEY_MAIN_MENU" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Menu"
+    "KEY_APP_TAGLINE": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Slide blocks. Clear lines. Beat your high score."
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "メニュー"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ブロックを滑らせ、ラインを消して、ハイスコアを更新。"
           }
         },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "菜单"
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "滑动方块,消除整行,挑战最高分。"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "選單"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "滑動方塊、消除整列、挑戰最高分。"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "選單"
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "滑動方塊、消除整列、挑戰最高分。"
           }
         }
       }
     },
-    "KEY_NEW_HIGH_SCORE" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "★ NEW HIGH SCORE ★"
+    "KEY_APP_TITLE": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Block Slide"
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "★ ハイスコア更新 ★"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ブロックスライド"
           }
         },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "★ 新纪录 ★"
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "方块滑动"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "★ 最佳紀錄 ★"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "方塊滑動"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "★ 最佳紀錄 ★"
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "方塊滑動"
           }
         }
       }
     },
-    "KEY_NEXT" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "NEXT"
+    "KEY_GAMEOVER_TITLE": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "GAME OVER"
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "ネクスト"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ゲームオーバー"
           }
         },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "下一个"
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "游戏结束"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "下一個"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "遊戲結束"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "下一個"
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "遊戲結束"
           }
         }
       }
     },
-    "KEY_PLAY" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "PLAY"
+    "KEY_HUD_HIGH_SCORE": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "HIGH"
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "プレイ"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最高"
           }
         },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "开始"
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最高"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "開始"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最高"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "開始"
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "最高"
           }
         }
       }
     },
-    "KEY_PLAY_AGAIN" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Play Again"
+    "KEY_HUD_SCORE": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "SCORE"
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "もう一度プレイ"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "スコア"
           }
         },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "再玩一局"
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "得分"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "再玩一局"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "分數"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "再玩一局"
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "分數"
           }
         }
       }
     },
-    "KEY_ROTATE" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rotate"
+    "KEY_MAIN_MENU": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Menu"
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "回転"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "メニュー"
           }
         },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "旋转"
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "菜单"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "旋轉"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "選單"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "旋轉"
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "選單"
           }
         }
       }
     },
-    "KEY_SETTINGS" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Settings"
+    "KEY_NEW_HIGH_SCORE": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "★ NEW HIGH SCORE ★"
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "設定"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "★ ハイスコア更新 ★"
           }
         },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "设置"
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "★ 新纪录 ★"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "設定"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "★ 最佳紀錄 ★"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "設定"
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "★ 最佳紀錄 ★"
           }
         }
       }
     },
-    "KEY_SETTINGS_FEEDBACK_HEADER" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Feedback"
+    "KEY_NEXT": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "NEXT"
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "フィードバック"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ネクスト"
           }
         },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "反馈"
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下一个"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "回饋"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下一個"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "回饋"
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "下一個"
           }
         }
       }
     },
-    "KEY_SETTINGS_HAPTICS" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Haptics"
+    "KEY_PLAY": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "PLAY"
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "触覚フィードバック"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "プレイ"
           }
         },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "震动"
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "开始"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "震動"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "開始"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "震動"
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "開始"
           }
         }
       }
     },
-    "KEY_SETTINGS_SOUND" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sound"
+    "KEY_PLAY_AGAIN": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Play Again"
           }
         },
-        "ja" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "サウンド"
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "もう一度プレイ"
           }
         },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "音效"
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "再玩一局"
           }
         },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "音效"
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "再玩一局"
           }
         },
-        "zh-HK" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "音效"
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "再玩一局"
+          }
+        }
+      }
+    },
+    "KEY_ROTATE": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rotate"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "回転"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "旋转"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "旋轉"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "旋轉"
+          }
+        }
+      }
+    },
+    "KEY_SETTINGS": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settings"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "设置"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "設定"
+          }
+        }
+      }
+    },
+    "KEY_SETTINGS_FEEDBACK_HEADER": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Feedback"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "フィードバック"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "反馈"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "回饋"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "回饋"
+          }
+        }
+      }
+    },
+    "KEY_SETTINGS_HAPTICS": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Haptics"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "触覚フィードバック"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "震动"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "震動"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "震動"
+          }
+        }
+      }
+    },
+    "KEY_SETTINGS_SOUND": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sound"
+          }
+        },
+        "ja": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "サウンド"
+          }
+        },
+        "zh-Hans": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "音效"
+          }
+        },
+        "zh-Hant": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "音效"
+          }
+        },
+        "zh-HK": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "音效"
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }
