@@ -1,6 +1,0 @@
-framework module Pods_NumberClash_NumberClashUITests {
-  umbrella header "Pods-NumberClash-NumberClashUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}
